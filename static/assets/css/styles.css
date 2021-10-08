@@ -240,7 +240,9 @@
 }
 
 .horizontal-main-wrapper .container {
-    max-width: 1440px;
+    max-width: 1000px;
+    border: 0px solid;
+    /* 1440px */
 }
 
 .horizontal-main-wrapper .header-area,
@@ -255,7 +257,7 @@
 
 .mainheader-area .notification-area {
     -webkit-transform: translateY(-11px);
-            transform: translateY(1px);
+            transform: translateY(-1px);
 }
 
 .mainheader-area {
@@ -482,11 +484,12 @@
             user-select: none;
     position: relative;
     z-index: 1;
+    margin-right: -16px;
 }
 
 .notification-area li {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 14px;
     cursor: pointer;
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -719,7 +722,7 @@ ul.breadcrumbs {
         flex-wrap: wrap;
     background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
     background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
-    padding: 17px 38px;
+    padding: 12px 8px;
     position: relative;
 }
 
