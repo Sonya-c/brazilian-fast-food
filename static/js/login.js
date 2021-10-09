@@ -18,7 +18,7 @@ var username = document.formRegistro.username;
   var username_len = username.value.length;
   if (username_len == 0 || username_len < 8) {
     alert("Debes ingresar un username con min. 8 caracteres");
-    passid.focus();
+    username.focus();
     return false; //Para la parte dos, que los datos se conserven
   }
 
