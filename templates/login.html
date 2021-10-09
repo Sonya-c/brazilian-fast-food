@@ -6,6 +6,7 @@
     <title>Login Stie</title>
     <link rel="stylesheet" href="../static/css/log.css">
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
@@ -26,7 +27,9 @@
                 </div>
                 <div class="signin">
                     <h1>Login</h1>
-                    <form class="more-padding" autocomplete="off">
+                    
+                    <form class="more-padding" autocomplete="off" onSubmit="validar_formulario();">
+                      
                         <input type="text" id="username" placeholder="username">
                         <input type="password" id="password" placeholder="password">
                         <!-- <div class="checkbox">
