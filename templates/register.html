@@ -1,0 +1,101 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css"   href="../static/css/estilos.css"/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+  
+    <title>Document</title>
+
+</head>
+<body> -->
+{% extends "base.html" %}
+{% block content %}
+  <div class="Brazilian-container">
+    <div id="Brazilian-checkout">
+      <h1>Crear Empleado Brazilian Fast Food</h1>
+      
+      <form class="Brazilian-form" action="submit">
+        
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Nombre</label>
+          <input class="form-control"  type="text" placeholder="Ej: Juan" required>
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Apellido</label>
+          <input class="form-control" type="text" placeholder="Ej: Perez" required>
+        </div>
+          
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">E-mail</label>
+          <input class="form-control" type="email" placeholder="E-mail" required>
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Identificacion</label>
+          <input class="form-control" type="number" placeholder="Ej: 1629" required>
+        </div>
+          
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Dirección</label>
+          <input class="form-control"  type="text" placeholder="Ej: Juramento" required>
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Genero</label>
+          <select class="form-control" id="Genero" required>
+            <option>Seleccione</option>
+            <option>Mujer</option>
+           <option>Hombre</option>
+          </select>
+        </div>  
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Dependencia</label>
+          <select class="form-control" id="Genero" required>
+            <option>Seleccione</option>
+           
+          </select>
+        </div>  
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Cargo</label>
+          <select class="form-control" id="Genero" required>
+            <option>Seleccione</option>
+
+          </select>
+        </div>  
+          
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Tipo de contrato</label>
+          <input class="form-control" type="text" placeholder="Ej: Indefinido" required>
+        </div>  
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Salario</label>
+          <input class="form-control" type="number" placeholder="Ej: 2000$" required>
+        </div>
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Fecha de inicio</label>
+          <input class="form-control" type="date" placeholder="Ej: Indefinido" required>
+        </div> 
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Fecha de terminacion</label>
+          <input class="form-control" type="date" placeholder="Ej: Indefinido" required>
+        </div>   
+
+       
+  
+        <button id="Brazilian-button" class="btn btn-block btn-success submit-button" type="submit">
+          <span class="submit-button-lock"></span>
+          <span class="align-middle">Guardar</span>
+        </button>
+  
+      </form>
+    </div>
+      
+  </div>
+{% endblock %}
+<!-- </body>
+</html> -->

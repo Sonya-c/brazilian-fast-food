@@ -14,6 +14,11 @@ def dashboard():
 @app.route('/register.html')
 def register():
     return render_template('register.html')
+    
+@app.route('/editarEmpleado.html')
+def editar():
+    return render_template('editarEmpleado.html')
+
 
 if __name__ == '__main__':
     app.run()   
