@@ -11,9 +11,9 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/register.htm')
+@app.route('/register.html')
 def register():
-    return render_template('register.htm')
+    return render_template('register.html')
 
 if __name__ == '__main__':
     app.run()   
