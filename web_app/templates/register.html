@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    Register
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <form action="" method="post" class="form-register" style="color: white">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Register new user
+            </h1>
+            <br>
+            {{form.username.label()}}
+            {{form.username(class="form-control form-control-md", placeholder="Username")}}
+            
+            {{form.email_address.label()}}
+            {{form.email_address(class="form-control form-control-md", type="email", placeholder="e-mail")}}
+            
+            {{form.password1.label()}}
+            {{form.password1(class="form-control form-control-md", placeholder="Set user password")}}
+            
+            {{form.password2.label()}}
+            {{form.password2(class="form-control form-control-md", placeholder="Confirm your password")}}
+            <br>
+            {{ form.submit(class="btn btn-md btn-block btn-primary") }}
+        </form>
+    </div>
+{% endblock %}

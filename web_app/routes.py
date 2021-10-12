@@ -1,5 +1,5 @@
 from flask import render_template
-#from web_app.forms import RegisterForm
+from web_app.forms import RegisterForm
 from web_app import app
 from core.models import item_Collection
 
@@ -13,10 +13,8 @@ def index():
 def market():
     items = item_Collection
     return render_template('market.html', title='Market', items = items)
-'''
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     return render_template('register.html', form=form)
-'''
