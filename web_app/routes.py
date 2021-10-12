@@ -1,5 +1,7 @@
 from flask import render_template
+#from web_app.forms import RegisterForm
 from web_app import app
+from core.models import item_Collection
 
 @app.route('/')
 @app.route('/index')
@@ -9,9 +11,12 @@ def index():
 
 @app.route('/market')
 def market():
-    items = [
-    {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
-    {'id': 2, 'name': 'Laptop', 'barcode': '123985473165', 'price': 900},
-    {'id': 3, 'name': 'Keyboard', 'barcode': '231985128446', 'price': 150}
-]
+    items = item_Collection
     return render_template('market.html', title='Market', items = items)
+'''
+
+@app.route('/register')
+def register():
+    form = RegisterForm()
+    return render_template('register.html', form=form)
+'''
