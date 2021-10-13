@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-3 my-1"></div>
+                            <div class="col-sm-3 my-1">
+                                <label class="sr-only" for="inlineFormInputName">Nombre</label>
+                                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre..">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label class="sr-only" for="inlineFormInputName">Documento</label>
+                                <input type="text" class="form-control" id="inlineFormInputDocument" placeholder="Documento..">
+                            </div>
+                        </div>
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-5 my-1"></div>
+                            <div class="col-sm-2 my-1" style="text-align: -webkit-center;">
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </div>
+                            <div class="col-sm-4 my-1"></div>
+                            <div class="col-sm-4 my-1">
+                                <div class="fw-icons col-lg-3 col-sm-6"><a href="#">
+                                    <i class="fa fa-exclamation-triangle"></i> amazon</a>
+                                </div>
+                                <div class="fw-icons col-sm-1 my-1"><a href="#"><i class="fa fa-500px"></i> 500px</a></div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

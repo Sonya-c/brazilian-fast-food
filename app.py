@@ -11,6 +11,10 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/buscar')
+def buscar():
+    return render_template('buscarEmpleado.html')
+
 @app.route('/register')
 def register():
     return render_template('register.html')
