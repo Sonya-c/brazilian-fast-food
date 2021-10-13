@@ -1,28 +1,76 @@
-{% extends 'base.html' %}
-{% block title %}
-    Register
-{% endblock %}
+{% extends "base.html" %}
 {% block content %}
-
-    <div class="container">
-        <form action="" method="post" class="form-register" style="color: white">
-            <h1 class="h3 mb-3 font-weight-normal">
-                Register new user
-            </h1>
-            <br>
-            {{form.username.label()}}
-            {{form.username(class="form-control form-control-md", placeholder="Username")}}
-            
-            {{form.email_address.label()}}
-            {{form.email_address(class="form-control form-control-md", type="email", placeholder="e-mail")}}
-            
-            {{form.password1.label()}}
-            {{form.password1(class="form-control form-control-md", placeholder="Set user password")}}
-            
-            {{form.password2.label()}}
-            {{form.password2(class="form-control form-control-md", placeholder="Confirm your password")}}
-            <br>
-            {{ form.submit(class="btn btn-md btn-block btn-primary") }}
-        </form>
-    </div>
+  <div class="Brazilian-container">
+    <div id="Brazilian-checkout">
+      <h1>Crear Empleado Brazilian Fast Food</h1>
+      
+      <form class="Brazilian-form">
+        
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Nombre</label>
+          {{form.name(class="form-control form-control-md", placeholder="Ej: Juan")}}
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Apellido</label>
+          {{form.lastname(class="form-control form-control-md", placeholder="Ej: Perez")}}
+        </div>
+          
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">E-mail</label>
+          {{form.email_address(class="form-control form-control-md", placeholder="usuario@micorreo.com")}}
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Identificacion</label>
+          {{form.employee_id(class="form-control form-control-md", placeholder="Ej: 1629")}}
+        </div>
+          
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Dirección</label>
+          {{form.address(class="form-control form-control-md", placeholder="Ej: Juramento")}}
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Genero</label>
+          {{form.gender(class="form-control form-control-md")}}
+        </div>  
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Dependencia</label>
+          {{form.branch(class="form-control form-control-md")}}
+        </div>  
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Cargo</label>
+          {{form.job_title(class="form-control form-control-md")}}
+        </div>  
+          
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Tipo de contrato</label>
+          {{form.contract(class="form-control form-control-md", placeholder="Ej: Indefinido")}}
+        </div>  
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Salario</label>
+          {{form.salary(class="form-control form-control-md", placeholder="Ej: $2000")}}
+        </div>
+        <div class="Brazilian-form-derecha form-group">
+          <label class="">Fecha de terminacion</label>
+          {{form.contract_end(class="form-control form-control-md", type="date")}}
+        </div> 
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Fecha de inicio</label>
+          {{form.contract_start(class="form-control form-control-md", type="date")}}
+        </div>  
+        <div class="Brazilian-form-izquierda form-group">
+          <label class="">Contrasena</label>
+          {{form.password1(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+        </div> 
+        <div class="Brazilian-form-derecha form-group">
+          <label class=""> Confirma la Contrasena</label>
+          {{form.password2(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+        </div> 
+        <br> 
+        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button", type="submit") }}  
+      </form>
+    </div> 
+  </div>
 {% endblock %}

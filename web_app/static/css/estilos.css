@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Pacifico Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Pacifico Regular'), url('../assets/fonts/Pacifico.woff') format('woff');
+  }
+
+#Brazilian-Brand{
+  font-family:'Pacifico Regular'; 
+  font-weight:normal;
+}
+
+
+.Brazilian-container {
+  margin-top: 50px;
+  margin: 20px auto;
+}
+
+#Brazilian-checkout {
+  z-index: 100001;
+  width: 700px;
+  height: 100%;
+  min-height: 100%;
+  background: 0 0 #ffffff;
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background: #dee2e6;
+
+
+}
+
+#Brazilian-checkout > h1 {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  background: #EEF2F4;
+  color: #5D6F78;
+  font-size: 40px;
+  font-weight: 300;
+  border-bottom: 1px solid #DEDEDE;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #dee2e6;
+
+}
+
+.Brazilian-form {
+  padding: 1.4em;
+  margin: 0 25px 25px;
+  background: #dee2e6;
+
+}
+
+.Brazilian-form-izquierda {
+  padding-right: 5px;
+  float: left;
+  width: 50%;
+}
+
+.Brazilian-form-derecha {
+  padding-left: 5px;
+  float: right;
+  width: 50%;
+}
+
+.Brazilian-form label {
+  color: #46545C;
+  margin-bottom: 2px;
+  display: block;
+  font-size: 14px;
+}
+
+.Brazilian-form input {
+  box-shadow: none ;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.25em;
+  padding-left: 5px;
+}
+
+.Brazilian-form input:focus {
+  border-color: #b0e5e3 ;
+  background-color: #EEF9F9 ;
+}
+
+#Brazilian-button {
+  outline: 0 ;
+  height: 42px;
+  font-size: 16px;
+  background-color: #064254 ;
+  border: none;
+}
+
+#Brazilian-button:hover {
+  background-color: #1eb8b2 ;
+}
+
+#Brazilian-button:active {
+  background-color: #4FBCB9 ;
+}
+
+#Brazilian-button:disabled {
+  background: rgba(84, 199, 195, 0.5) t;
+  color: #FFF t;
+}
+
+/*****MEDIA QUERYS******/
+@media screen and (max-width: 680px) {
+  #Brazilian-checkout {
+    width: 95%;
+  }
+
+  .Brazilian-form {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 681px) and (max-width: 1200px) {
+  #Brazilian-checkout {
+    width: 600px;
+  }
+}

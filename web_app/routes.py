@@ -7,12 +7,14 @@ from core.models import item_Collection
 @app.route('/index')
 @app.route('/home')
 def index():
-    return render_template('index.html')
+    return render_template('login.html')
 
+'''
 @app.route('/market')
 def market():
     items = item_Collection
     return render_template('market.html', title='Market', items = items)
+'''
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

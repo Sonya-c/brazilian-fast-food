@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Stie</title>
+    <link rel="stylesheet" href="../static/css/log.css">
+    
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+        <div class="welcome">
+            <div class="pinkbox">
+                <div class="signup nodisplay">
+                    <h1>register</h1>
+                    <form autocomplete="off" method="post">
+                        <input type="text" id="usernam" placeholder="username">
+                        <input type="email" id="correo" placeholder="email">                    
+                        <input type="password" id="passwor" placeholder="password">
+                        <button class="button submit">create account </button>
+                    </form>
+                </div>
+                <div class="signin">
+                    <h1>Login</h1>
+                    
+                    <form class="more-padding" autocomplete="off" onSubmit="validar_formulario();">
+                      
+                        <input type="text" id="username" placeholder="username">
+                        <input type="password" id="password" placeholder="password">
+                        <!-- <div class="checkbox">
+                            <input type="checkbox" id="remember" /><label for="remember">remember me</label>
+                        </div> -->
+
+                        <button class="button submit">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="leftbox">
+                <h2 class="title"><span>BRAZILIAN</span><br>FAST FOOD</h2>
+                
+                <img class="flower" src="../static/images/pngwing.com.png" />
+                <!-- <p class="account"></p> -->
+                <!-- <button class="button" id="signup">sign up</button> -->
+            </div>
+            <!-- <div class="rightbox">
+                <h2 class="title"><span>BLOOM</span>&<br>BOUQUET</h2>
+                <p class="desc">pick your perfect <span>bouquet</span></p>
+                <img class="flower smaller" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="1357d638624297b">
+                <p class="account">have an account?</p>
+                <button class="button" id="signin">login</button>
+            </div> -->
+            
+        </div>
+    </div>
+
+    </div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
