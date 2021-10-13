@@ -291,7 +291,8 @@
 
 .horizontal-menu ul li:hover>a,
 .horizontal-menu ul li.active>a {
-    color: #007BFF;
+    /* color: #007BFF; */
+    color: #ff8f5a;
 }
 
 .horizontal-menu nav>ul>li:first-child>a {
@@ -311,7 +312,8 @@
     background: #fff;
     opacity: 0;
     visibility: hidden;
-    border-top: 4px solid #007BFF;
+    /* border-top: 4px solid #007BFF; */
+    border-top: 4px solid #ff8f5a;
     border-radius: 3px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
 }
@@ -498,7 +500,8 @@
 }
 
 .notification-area li.settings-btn.active i {
-    color: #007BFF;
+    /* color: #007BFF; */
+    color: #ff8f5a;
 }
 
 .notification-area li>i {
@@ -1898,7 +1901,8 @@ p.card-text {
 /*-------------------- 16. Pagination ------------------- */
 
 .pg-color-border li a {
-    border-color: #007BFF;
+    /* border-color: #007BFF; */
+    border-color: #ff8f5a;
 }
 
 .pagination li a {
@@ -2004,7 +2008,8 @@ label {
 }
 
 .fw-icons a:hover {
-    color: #007BFF;
+    /* color: #007BFF; */
+    color: #ff8f5a;
 }
 
 .fw-icons a i {
@@ -2060,7 +2065,8 @@ label {
 }
 
 .icon-container:hover span {
-    color: #007BFF;
+    /* color: #007BFF; */
+    color: #ff8f5a;
 }
 
 /*-------------------- END Icons ------------------- */
@@ -2841,4 +2847,7 @@ table.dataTable thead td {
     color: #555;
 }
 
+.contentBuscar{
+    display: none;
+}
 /*-------------------- END Offset Sidebar ------------------- */
