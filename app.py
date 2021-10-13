@@ -42,6 +42,12 @@ def dashboard():
 def register():
     print('session: '+str(current_user.is_authenticated))
     return render_template('register.html')
+
+@app.route('/buscar')
+@login_required
+def buscar():
+    print('session: '+str(current_user.is_authenticated))
+    return render_template('buscarEmpleado.html')
     
 @app.route('/editar')
 @login_required
