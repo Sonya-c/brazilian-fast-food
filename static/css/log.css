@@ -1,20 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
-body, html {
-  height: 100%;
-}
-
 body {
-  min-height: 100%;
-  background: #dbbc82c7;
-}
-
-/*
- * Center the elements inside a container
- */
-.center-items {
-  display: flex;
-  align-items: center;
-  
+  /* background: #CBC0D3; */  
+  background: #dbbc82c7; 
+  /* background: #3eabbd82; */
 }
 
 /* div box styling */
