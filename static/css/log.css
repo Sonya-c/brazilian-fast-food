@@ -120,7 +120,7 @@ span {
   opacity: 0.9;
 }
 
-button {
+.button {
   padding: 12px;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
@@ -130,6 +130,7 @@ button {
   margin: auto;
   outline: none;
   display: block;
+  width: 50%;
 }
 button:hover {
   /* background: #EAC7CC; */
