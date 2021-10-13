@@ -8,11 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Prueba\brazilian-fast-food\env
-=======
-set VIRTUAL_ENV=C:\Users\DESARROLLO 5\proyecto\Java\ciclo3\brazilian-fast-food\env
->>>>>>> a331913a0142e8577f1ee4182f1cd0ef3ab8ce5d
 
 if not defined PROMPT set PROMPT=$P$G
 

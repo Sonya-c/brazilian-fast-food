@@ -1992,7 +1992,7 @@ label {
 
 /*-------------------- 18. Icons ------------------- */
 
-.fw-icons {}
+/* .fw-icons {} */
 
 .fw-icons a {
     color: #444;
@@ -2007,7 +2007,7 @@ label {
 
 .fw-icons a i {
     width: 30px;
-    font-size: 14px;
+    font-size: xx-large;
 }
 
 
