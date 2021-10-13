@@ -551,7 +551,7 @@
 }
 
 .notify-title a {
-    float: right;
+    /* float: right; */
     display: inline-block;
     color: #ffee1d;
     font-size: 13px;
@@ -1181,7 +1181,8 @@ table.dbkit-table tr td {
 }
 
 .exchange-btn button:hover {
-    background: #3c34ab;
+    /* background: #3c34ab; */
+    background: #dd650f;
 }
 
 .footer-area {
@@ -1270,7 +1271,7 @@ table.dbkit-table tr td {
     color: #e1e1e1;
 }
 
-.member-box .media-body {}
+/* .member-box .media-body {} */
 
 .member-box .media-body p {
     font-size: 18px;
@@ -1789,6 +1790,7 @@ table.dbkit-table tr td {
     padding: 11px 17px;
     font-size: 13px;
     letter-spacing: 0;
+    background: #ff8f5a;
 }
 
 .btn-xl {
@@ -2149,7 +2151,8 @@ table.dataTable thead td {
 .datatable-primary .dataTables_paginate .paginate_button.disabled,
 .datatable-primary .dataTables_paginate .paginate_button.disabled:hover,
 .datatable-primary .dataTables_paginate .paginate_button.disabled:active {
-    color: #4336fb!important;
+    /* color: #4336fb!important; */
+    color: #dd650f!important;
     border: none;
 }
 
@@ -2215,7 +2218,7 @@ table.dataTable thead td {
 
 /*-------------------- 22. Invoice ------------------- */
 
-.invoice-area {}
+/* .invoice-area {} */
 
 .invoice-head {
     margin-bottom: 30px;
@@ -2258,7 +2261,7 @@ table.dataTable thead td {
     margin-bottom: 5px;
 }
 
-.invoice-table {}
+/* .invoice-table {} */
 
 .invoice-table .table-bordered td,
 .invoice-table .table-bordered th {
@@ -2421,7 +2424,8 @@ table.dataTable thead td {
 }
 
 .submit-btn-area button:hover {
-    background: #2c71da;
+    /* background: #2c71da; */
+    background: #dd650f;
     color: #ffffff;
 }
 
