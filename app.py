@@ -60,7 +60,7 @@ def login():
         user = get_user(form.email.data)
         print("pass: "+ form.password.data)
         print (user)
-        if user is not None:# and user.check_password(form.password.data):
+        if user is not None and user.check_password(form.password.data):
             
             login_user(user, remember=form.remember_me.data)
             print("login status: "+ str(current_user.is_authenticated))
