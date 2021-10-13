@@ -7,7 +7,6 @@ from forms import LoginForm,SignupForm
 from models import users,User,get_user
 
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY']= 'AQUI VA LA CLAVE MAESTRA'
 login_manager = LoginManager(app)
