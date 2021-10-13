@@ -3,59 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login Stie</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../static/css/log.css">
-    
-   
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 
 <body>
+
     <!-- partial:index.partial.html -->
     <div class="container">
         <div class="welcome">
+
             <div class="pinkbox">
-                <div class="signup nodisplay">
-                    <h1>register</h1>
-                    <form autocomplete="off" method="post">
-                        <input type="text" id="usernam" placeholder="username">
-                        <input type="email" id="correo" placeholder="email">                    
-                        <input type="password" id="passwor" placeholder="password">
-                        <button class="button submit">create account </button>
-                    </form>
-                </div>
+                
                 <div class="signin">
                     <h1>Login</h1>
+
                     <form action=""  class="more-padding" method="post" novalidate>
                         {{ form.hidden_tag() }}
-                        {{ form.email(placeholder="Correo") }}<br>
-                        {% for error in form.email.errors %}
-                        <div>
-                            <span style="color: red;">{{ error }}</span>
-                        </div>
-                        {% endfor %}
 
-                        {{ form.password(placeholder="Contraseña") }}<br>
-                        {% for error in form.password.errors %}
-                        <div>
-                            <span style="color: red;">{{ error }}</span>
+                        <div class="form-block">
+                            {{ form.email.label }}
+                            {{ form.email }}
+                            
+                            {% for error in form.email.errors %}
+                                <span class="form-error">{{ error }}</span>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                         
-                        {{ form.submit(class="button submit")}}
-                        <!-- <div class="checkbox">{{ form.remember_me() }} {{ form.remember_me.label }}</div> -->
+                        <div class="form-block">
+                            {{ form.password.label }}
+                            {{ form.password }}
+
+                            {% for error in form.password.errors %}
+                                <span class="form-error"">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="checkbox">{{ form.remember_me() }} {{ form.remember_me.label }}</div>
                         
-                    </form>
-                        
-                        
+                        <div cla> {{ form.submit() }} </div>
                 </div>
             </div>
             <div class="leftbox">
                 <h2 class="title"><span>BRAZILIAN</span><br>FAST FOOD</h2>
                 
-                <img class="flower" src="../static/images/logo.svg" />
+                <img class="flower" src="../static/images/pngwing.com.png" />
                 <!-- <p class="account"></p> -->
                 <!-- <button class="button" id="signup">sign up</button> -->
             </div>
