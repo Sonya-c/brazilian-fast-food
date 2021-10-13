@@ -1,7 +1,5 @@
-from flask.app import Flask
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField
-from wtforms.fields.core import DecimalField, FloatField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField, DecimalField
 
 class RegisterForm(FlaskForm):
     name = StringField(label='Nombre')
@@ -9,9 +7,9 @@ class RegisterForm(FlaskForm):
     email_address = StringField(label='Correo Electronico')
     employee_id = StringField(label='Numero de Identificacion')
     address = StringField(label='Direccion de residencia')
-    gender = SelectField(label="Sexo")
-    branch = SelectField(label="Dependencia")
-    job_title = SelectField(label="Cargo")
+    gender = SelectField(label="Sexo", choices=[('M', 'Masculino'), ('F', 'Femenino')], validate_choice=True)
+    branch = SelectField(label="Dependencia",validate_choice=True)
+    job_title = SelectField(label="Cargo",validate_choice=True)
     contract = StringField(label='Num. de Contrato')
     salary = DecimalField(label='Salario', places=2, rounding=None, use_locale=False)
     contract_start = DateField(label='Fecha Inicio Contrato')
@@ -24,15 +22,15 @@ class RegisterForm(FlaskForm):
 class EditForm(FlaskForm):
     email_address = StringField(label='Correo Electronico')
     address = StringField(label='Direccion de residencia')
-    branch = SelectField(label="Dependencia")
-    job_title = SelectField(label="Cargo")
+    branch = SelectField(label="Dependencia",validate_choice=True)
+    job_title = SelectField(label="Cargo",validate_choice=True)
     contract = StringField(label='Num. de Contrato')
     salary = DecimalField(label='Salario', places=2, rounding=None, use_locale=False)
     contract_start = DateField(label='Fecha Inicio Contrato')
     contract_end = DateField(label='Fecha Finalizacion Contrato')
     address = StringField(label='Direccion de residencia')
     
-    submit = SubmitField(label='Crear usuario')
+    submit = SubmitField(label='Guardar Cambios')
 
 
 class LoginForm(FlaskForm):
