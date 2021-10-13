@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField, DecimalField
+from wtforms.fields.core import IntegerField
 
 class RegisterForm(FlaskForm):
     name = StringField(label='Nombre')
@@ -11,7 +12,7 @@ class RegisterForm(FlaskForm):
     branch = SelectField(label="Dependencia",validate_choice=True)
     job_title = SelectField(label="Cargo",validate_choice=True)
     contract = StringField(label='Num. de Contrato')
-    salary = DecimalField(label='Salario', places=2, rounding=None, use_locale=False)
+    salary = IntegerField(label='Salario')
     contract_start = DateField(label='Fecha Inicio Contrato')
     contract_end = DateField(label='Fecha Finalizacion Contrato')
     password1 = PasswordField(label='Contrasena')
@@ -25,7 +26,7 @@ class EditForm(FlaskForm):
     branch = SelectField(label="Dependencia",validate_choice=True)
     job_title = SelectField(label="Cargo",validate_choice=True)
     contract = StringField(label='Num. de Contrato')
-    salary = DecimalField(label='Salario', places=2, rounding=None, use_locale=False)
+    salary = IntegerField(label='Salario')
     contract_start = DateField(label='Fecha Inicio Contrato')
     contract_end = DateField(label='Fecha Finalizacion Contrato')
     address = StringField(label='Direccion de residencia')

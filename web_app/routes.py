@@ -2,6 +2,7 @@ from flask import render_template
 from web_app.forms import EditForm, LoginForm, RegisterForm
 from web_app import app
 from core.models import get_available_branches, item_Collection, dummy_Employee, get_available_jobs
+from core.utils import translate_gender
 
 @app.route('/')
 @app.route('/index')
@@ -20,12 +21,15 @@ def market():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
+    form.job_title.choices = get_available_jobs()
+    form.branch.choices = get_available_branches()
     return render_template('register.html', form=form)
 
 @app.route('/edit', methods=['GET', 'POST'])
 def edit():
     # TO-DO: replace with database logic later on fetching corresponding employee(user).
     employee = dummy_Employee
+    employee['gender'] = translate_gender(employee['gender'])
     form = EditForm()
     form.job_title.choices = get_available_jobs()
     form.branch.choices = get_available_branches()

@@ -11,6 +11,9 @@ def get_available_jobs():
 def get_available_branches():
     return [('baq', 'Barranquilla'), ('bog', 'Bogota'), ('cal', 'Cali'), ('mtr','Monteria'), ('ctg', 'Cartagena'), ('mde', 'Medellin')]
 
+def populate_genders():
+    return [('M', 'Masculino'), ('F', 'Femenino')]
+
 item_Collection = [
     {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
     {'id': 2, 'name': 'Laptop', 'barcode': '123985473165', 'price': 900},
@@ -27,7 +30,7 @@ dummy_Employee = {
     'branch' : 'Barranquilla',
     'job_title' : 'cj',
     'contract' : '246323AR12F',
-    'salary' : 6500000.99,
+    'salary' : 6500000,
     'contract_start' : date.fromisoformat('2021-01-01'),
     'contract_end' : date.fromisoformat('2021-12-31')
 }
