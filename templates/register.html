@@ -14,6 +14,7 @@
 <body> -->
 {% extends "base.html" %}
 {% block content %}
+ <script src="{{ url_for('static', filename='js/login.js') }}"></script>
   <div class="Brazilian-container">
     <div id="Brazilian-checkout">
       <h1>Crear Empleado Brazilian Fast Food</h1>
@@ -83,8 +84,17 @@
         <div class="Brazilian-form-izquierda form-group">
           <label class="">Fecha de terminacion</label>
           <input class="form-control" type="date" placeholder="Ej: Indefinido" required>
+        </div>  
+       <form class="more-padding" autocomplete="off" onSubmit="validar_formulario();"> 
+          <div class="Brazilian-form-derecha form-group">
+          <label class="">Contraseña</label>
+          <input class="form-control" type="password"  id="password" name="password" placeholder="Ej: Brazilian123" "required>
+          </div> 
+         <div class="Brazilian-form-izquierda form-group">
+          <label class="">Usuario</label>
+          <input class="form-control" type="text" id="username" name="username" placeholder="Ej: Bfast" required>
         </div>   
-
+     </form>
        
   
         <button id="Brazilian-button" class="btn btn-block btn-success submit-button" type="submit">
