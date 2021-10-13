@@ -1,14 +1,40 @@
+from datetime import date, datetime
 from web_app import app
 #from flask_sqlalchemy import sqlalchemy
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = '' 
 #db = sqlalchemy(app)
 
+def get_available_jobs():
+    return [('co', 'Courier'), ('cj', 'Chef Jefe'), ('ch', 'Chef'), ('ms','Mesero'), ('ad', 'Administrador')]
+
+def get_available_branches():
+    return [('baq', 'Barranquilla'), ('bog', 'Bogota'), ('cal', 'Cali'), ('mtr','Monteria'), ('ctg', 'Cartagena'), ('mde', 'Medellin')]
+
+def populate_genders():
+    return [('M', 'Masculino'), ('F', 'Femenino')]
+
 item_Collection = [
     {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
     {'id': 2, 'name': 'Laptop', 'barcode': '123985473165', 'price': 900},
     {'id': 3, 'name': 'Keyboard', 'barcode': '231985128446', 'price': 150}
 ]
+
+dummy_Employee = {
+    'employee_id': '1129498258', 
+    'name' : 'Tony',
+    'lastname' : 'Stark',
+    'email_address' : 'dummy_add@domain.com',
+    'address' : '92560 Malibu Street, CA',
+    'gender' : 'M',
+    'branch' : 'Barranquilla',
+    'job_title' : 'cj',
+    'contract' : '246323AR12F',
+    'salary' : 6500000,
+    'contract_start' : date.fromisoformat('2021-01-01'),
+    'contract_end' : date.fromisoformat('2021-12-31')
+}
+
 '''
 class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True, unique=True)
