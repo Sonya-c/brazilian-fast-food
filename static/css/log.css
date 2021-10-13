@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
 body {
   /* background: #CBC0D3; */  
-  /* background: #dbbc82c7; NARANJA */
-  background: #3eabbd82;
+  background: #dbbc82c7; 
+  /* background: #3eabbd82; */
 }
 
 /* div box styling */
@@ -29,8 +29,8 @@ body {
   right: 5%;
   /* background: #EAC7CC; */
   /* background: #70abe7; */
-  /* background: #dd650f; NARANJA */
-  background: #17a2b8;
+  background: #dd650f;
+  /* background: #17a2b8; */
   width: 320px;
   height: 500px;
   border-radius: 5px;
@@ -100,7 +100,7 @@ p {
 span {
   /* color: #EAC7CC; */
   /* color: #70abe7; */
-  color: #17a2b8;
+  color: #dd650f;
 }
 
 .flower {
@@ -134,7 +134,7 @@ button {
 button:hover {
   /* background: #EAC7CC; */
   /* background: #70abe7; */
-  background: #17a2b8;
+  background: #ff8f5a;
   color: #f6f6f6;
   transition: background-color 1s ease-out;
 }
@@ -144,11 +144,11 @@ button:hover {
   background: #f6f6f6;
   /* color: #ce7d88; */
   /* color:#4289cf; */
-  /* color: #ff8f5a; NARANJA */
-  color: #17a2b8;
+  color: #ff8f5a; 
+  /* color: #17a2b8; */
   /* border: solid 1px #EAC7CC; */
   /* border: solid 1px #70abe7; */
-  border: solid 1px #17a2b8;
+  border: solid 1px #ff8f5a;
 }
 
 /* form styling */
@@ -174,22 +174,22 @@ form {
   padding: 12px;
   /* border-color: #ce7d88; */
   /* border-color: #4289cf; */
-  border-color: #17a2b8;
+  border-color: #ff8f5a;
 }
 .submit:hover {
   /* background: #CBC0D3; */
-  background: #3eabbd82;
+  background: #dbbc82c7;
   border-color: #bfb1c9;
 }
 
 input {
   /* background: #EAC7CC; */
   /* background: #70abe7; */
-  background: #17a2b8;
+  background: #ff8f5a;
   width: 65%;
   /* color: #ce7d88; */
   /* color:#4289cf; */
-  color: #17a2b8;
+  color: #f6f6f6;
   
   border: none;
   border-bottom: 1px solid rgba(172, 102, 74, 0.5);
@@ -206,7 +206,7 @@ input::placeholder {
 input:focus {
   /* color: #ce7d88; */
   /* color:#4289cf; */
-  color: #17a2b8;
+  color: #f6f6f6;
   outline: none;
   border-bottom: 1.2px solid rgba(8, 128, 150, 0.7);
   font-size: 1.3em;
@@ -221,7 +221,7 @@ label {
   font-family: "Open Sans", sans-serif;
   /* color: #ce7d88; */
   /* color:#4289cf; */
-  color: #17a2b8;
+  color: #ff8f5a;
   font-size: 0.8em;
   letter-spacing: 1px;
 }
@@ -238,12 +238,12 @@ input[type=checkbox] {
   width: 7px;
   /* background: #ce7d88; */
   /* color:#4289cf; */
-  color: #17a2b8;
+  color: #ff8f5a;
 }
 
 .checkbox input[type=checkbox]:checked + label {
   /* color: #ce7d88; */
   /* color:#4289cf; */
-  color: #17a2b8;
+  color: #ff8f5a;
   transition: 0.5s all ease;
 }
