@@ -1,5 +1,8 @@
 env\
+.env
+env
 _pycache_\
 *.pyc
 .vscode
 README.md
+env.bat
