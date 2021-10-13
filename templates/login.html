@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Login Stie</title>
     <link rel="stylesheet" href="../static/css/log.css">
+    
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
@@ -18,7 +19,7 @@
             <div class="pinkbox">
                 <div class="signup nodisplay">
                     <h1>register</h1>
-                    <form autocomplete="off">
+                    <form autocomplete="off" method="post">
                         <input type="text" id="usernam" placeholder="username">
                         <input type="email" id="correo" placeholder="email">                    
                         <input type="password" id="passwor" placeholder="password">
