@@ -28,7 +28,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
 @app.route('/',methods=['GET','POST'])
 def index():
-    return render_template('login.html')
+    return redirect(url_for('login'))
 
 
 
@@ -70,7 +70,7 @@ def login():
             #if not next_page or url_parse(next_page).netloc != '':
             #    next_page = url_for('index')
             #return redirect(next_page)
-    return render_template('login-form.html', form=form)
+    return render_template('login.html', form=form)
 
 
 @app.route("/signup/", methods=["GET", "POST"])
