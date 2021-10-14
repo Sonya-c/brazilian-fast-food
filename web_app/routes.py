@@ -11,13 +11,6 @@ def index():
     form = LoginForm()
     return render_template('login.html', form =form)
 
-'''
-@app.route('/market')
-def market():
-    items = item_Collection
-    return render_template('market.html', title='Market', items = items)
-'''
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
