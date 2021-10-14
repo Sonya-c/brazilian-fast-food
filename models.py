@@ -39,7 +39,7 @@ class Employee(UserMixin):
 
 users = []
 employees =[]
-users.append(User(len(users) + 1, "moco", "admin", "admin",True))
+users.append(User(len(users) + 1, "Superadmin", "admin", "admin",True))
 def get_user(email):
     for user in users:
         if user.email == email:
