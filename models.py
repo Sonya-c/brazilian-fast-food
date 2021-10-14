@@ -1,6 +1,7 @@
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 class User(UserMixin):
     def __init__(self, id, name, email, password, is_admin=False):
         self.id = id
@@ -35,13 +36,24 @@ class Employee(UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
     def __repr__(self):
-        return '<User {}>'.format(self.email)
+        return '<Employee {}>'.format(self.email)
 
 users = []
 employees =[]
 users.append(User(len(users) + 1, "Superadmin", "admin", "admin",True))
+employees.append(Employee(len(employees)+1,"Jhon","Jhon","12345","casa","main","cocinero","indef","5000","025","026"))
+
 def get_user(email):
     for user in users:
         if user.email == email:
-            return user
+            is_employee=False
+            return user,is_employee
+    for employee in employees:
+        
+        
+        print("get user: "+email+" "+employee.email)
+        print(str(employee.email == email)+","+str(type(email))+","+str(type(employee.email)))
+        if employee.email == email:
+            is_employee=True
+            return employee,is_employee
     return None

@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, current_user, login_manager
 from flask_login.utils import login_required
 from werkzeug.urls import url_parse
 from forms import LoginForm,SignupForm
-from models import users,User,get_user
+from models import users,User,get_user,Employee,employees
 
 
 app = Flask(__name__)
@@ -12,8 +12,14 @@ app.config['SECRET_KEY']= 'AQUI VA LA CLAVE MAESTRA'
 login_manager = LoginManager(app)
 #login_manager.login_view = ""
 
+is_employee=False
+
 @login_manager.user_loader
 def load_user(user_id):
+    if  is_employee:
+        for user in employees:
+            if user.id == int(user_id):
+                return user
     for user in users:
         if user.id == int(user_id):
             return user
@@ -58,17 +64,20 @@ def editar():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    global is_employee
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = get_user(form.email.data)
+        user = get_user(form.email.data)[0]
+        is_employee = get_user(form.email.data)[1]
+        print(form.email.data)
         print("pass: "+ form.password.data)
         print (user)
         if user is not None and user.check_password(form.password.data):
             
             login_user(user, remember=form.remember_me.data)
-            print("login status: "+ str(current_user.is_authenticated))
+            print("login status: "+ str(current_user.is_authenticated)+" "+str(current_user.name))
             return redirect(url_for('dashboard'))
             #next_page = request.args.get('next')
             
