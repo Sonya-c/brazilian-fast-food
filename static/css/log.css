@@ -1,8 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
+
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 body {
-  /* background: #CBC0D3; */  
-  background: #dbbc82c7; 
-  /* background: #3eabbd82; */
+  min-height: 100%;
+  background: #dbbc82c7;
 }
 
 /* div box styling */
@@ -18,7 +30,6 @@ body {
   width: 650px;
   height: 415px;
   position: absolute;
-  top: 25%;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
@@ -121,6 +132,7 @@ span {
 }
 
 .button {
+  cursor: pointer;
   padding: 12px;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
@@ -160,6 +172,10 @@ form {
   padding-top: 7px;
 }
 
+form > input {
+  font-size: medium;
+}
+
 .more-padding {
   padding-top: 35px;
 }
@@ -181,9 +197,12 @@ form {
   /* background: #CBC0D3; */
   background: #dbbc82c7;
   border-color: #bfb1c9;
+  color: white;
+  font-weight: bold;
 }
 
 input {
+  border-radius: 10px;
   /* background: #EAC7CC; */
   /* background: #70abe7; */
   background: #ff8f5a;
@@ -196,8 +215,16 @@ input {
   border-bottom: 1px solid rgba(172, 102, 74, 0.5);
   padding: 9px;
   margin: 7px;
-  
 }
+
+input[type="text"], input[type="password"] {
+  opacity: 0.5;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  opacity: 1;
+}
+
 input::placeholder {
   color: #f6f6f6;
   letter-spacing: 2px;
@@ -210,12 +237,11 @@ input:focus {
   color: #f6f6f6;
   outline: none;
   border-bottom: 1.2px solid rgba(8, 128, 150, 0.7);
-  font-size: 1.3em;
   transition: 0.8s all ease;
 }
+
 input:focus::placeholder {
   opacity: 0;
-  font-size: 1.3em;
 }
 
 label {
