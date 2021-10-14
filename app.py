@@ -4,22 +4,16 @@ from flask_login import login_user, logout_user, current_user, login_manager
 from flask_login.utils import login_required
 from werkzeug.urls import url_parse
 from forms import LoginForm,SignupForm
-from models import users,User,get_user,Employee,employees
+from models import users,User,get_user
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY']= 'AQUI VA LA CLAVE MAESTRA'
+app.config['SECRET_KEY']= '\x01\xe3i\x1c\xfc\x1c\xa3E\xc1%\xbfr\x9f\xd7\xdb\xc1\x11#t4\xec(\x8a\xed'
 login_manager = LoginManager(app)
 #login_manager.login_view = ""
 
-is_employee=False
-
 @login_manager.user_loader
 def load_user(user_id):
-    if  is_employee:
-        for user in employees:
-            if user.id == int(user_id):
-                return user
     for user in users:
         if user.id == int(user_id):
             return user
@@ -69,11 +63,10 @@ def login():
         return redirect(url_for('dashboard'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = get_user(form.email.data)[0]
-        is_employee = get_user(form.email.data)[1]
+        user = get_user(form.email.data)
         print(form.email.data)
         print("pass: "+ form.password.data)
-        print (user)
+ 
         if user is not None and user.check_password(form.password.data):
             
             login_user(user, remember=form.remember_me.data)
@@ -94,6 +87,7 @@ def show_signup_form():
     #    return redirect(url_for('index'))
     form = SignupForm()
     print(form.gender.data)
+    print(form.contract_start.data)
     if False:#form.validate_on_submit():
         name = form.name.data
         email = form.email.data

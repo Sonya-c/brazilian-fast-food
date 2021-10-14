@@ -39,21 +39,13 @@ class Employee(UserMixin):
         return '<Employee {}>'.format(self.email)
 
 users = []
-employees =[]
-users.append(User(len(users) + 1, "Superadmin", "admin", "admin",True))
-employees.append(Employee(len(employees)+1,"Jhon","Jhon","12345","casa","main","cocinero","indef","5000","025","026"))
+
+users.append(User(0, "Superadmin", "Admin", "admin",True))
+users.append(User(len(users) + 100, "Jhon", "Jhon", "12345"))
 
 def get_user(email):
     for user in users:
-        if user.email == email:
-            is_employee=False
-            return user,is_employee
-    for employee in employees:
-        
-        
-        print("get user: "+email+" "+employee.email)
-        print(str(employee.email == email)+","+str(type(email))+","+str(type(employee.email)))
-        if employee.email == email:
-            is_employee=True
-            return employee,is_employee
-    return None
+        if user.email == email.capitalize():
+            return user
+
+    return None,None

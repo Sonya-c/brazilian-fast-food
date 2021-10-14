@@ -1,6 +1,9 @@
+import datetime
 from flask_wtf.form import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField
-from wtforms.validators import EqualTo, Length, Email, DataRequired, NumberRange
+from wtforms import validators
+from wtforms.validators import EqualTo, Length, Email, DataRequired, NumberRange, ValidationError
+
 
 
 class LoginForm(FlaskForm):
@@ -19,10 +22,15 @@ class SignupForm(FlaskForm):
     branch = SelectField(label="Dependencia",choices=['1'],validate_choice=True, validators=[DataRequired()])
     job_title = SelectField(label="Cargo",choices=['mesero'],validate_choice=True, validators=[DataRequired()])
     contract = StringField(label='Num. de Contrato', validators=[DataRequired(), Length(min=6, message='El Valor ingresado no corresponde a un numero de contrato valido')])
-    salary = IntegerField(label='Salario', validators=[DataRequired('El campo de salario no puede estar vacio'), NumberRange(min=1,message='El salario especificado debe ser superior a $1')])
-    contract_start = DateField(label='Fecha Inicio Contrato', validators=[DataRequired('Debe especificar una fecha de inicio de contrato')])
-    contract_end = DateField(label='Fecha Finalizacion Contrato', validators=[DataRequired('Debe especificar una fecha de inicio de contrato'), NumberRange(min=contract_start,message='La fecha de inicio de contrato no puede ser posterior a la fecha final')])
-    password1 = PasswordField(label='Contrasena', validators=[DataRequired('La contrasena no puede ser vacia')])
-    password2 = PasswordField(label='Confirme la contrasena', validators=[DataRequired('La confirmacion de contrasena no puede ser vacia'), EqualTo(fieldname='password1',message='Las contrasenas provistas no coinciden')])
     
-    submit = SubmitField(label='Crear usuario')
+    salary = IntegerField(label='Salario', validators=[DataRequired('El campo de salario no puede estar vacio'), NumberRange(min=1,message='El salario especificado debe ser superior a $1')])
+    contract_start = DateField('Fecha inicial',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
+    contract_end = DateField('Fecha final',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
+    
+    password1 = PasswordField('password1',validators=[DataRequired(),EqualTo('password2',message='contraseña no coinciden')])  
+    password2 = PasswordField('password2',validators=[DataRequired()])  
+    submit = SubmitField('Crear usuario' )
+
+def validate_contract_end(self, filed):
+        if filed.data <= self.contract_start.data:
+            raise ValidationError('Finish date must more or equal start date.')
