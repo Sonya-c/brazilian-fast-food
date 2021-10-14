@@ -84,11 +84,13 @@ def show_signup_form():
     #if current_user.is_authenticated:
     #    return redirect(url_for('index'))
     form = SignupForm()
-    if form.validate_on_submit():
+    print(form.gender.data)
+    if False:#form.validate_on_submit():
         name = form.name.data
         email = form.email.data
         password = form.password.data
         # Creamos el usuario y lo guardamos
+        print(form.gender.data)
         user = User(len(users) + 1, name, email, password)
         users.append(user)
         # Dejamos al usuario logueado

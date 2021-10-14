@@ -2,69 +2,79 @@
 {% block content %}
   <div class="Brazilian-container">
     <div id="Brazilian-checkout">
-      <h1>Crear Empleado Brazilian Fast Food</h1>
+      <h1>Registrar Empleado</h1>
       
-      <form class="Brazilian-form">
-        
-        <div class="Brazilian-form-izquierda form-group">
+      <form class="Brazilian-form" method="post">
+        {{ form.hidden_tag() }}
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Nombre</label>
           {{form.name(class="form-control form-control-md", placeholder="Ej: Juan")}}
         </div>
           
-        <div class="Brazilian-form-derecha form-group">
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class="">Apellido</label>
           {{form.lastname(class="form-control form-control-md", placeholder="Ej: Perez")}}
         </div>
           
-        <div class="Brazilian-form-izquierda form-group">
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">E-mail</label>
-          {{form.email(class="form-control form-control-md", placeholder="usuario@micorreo.com")}}
+          {{form.email_address(class="form-control form-control-md", placeholder="usuario@micorreo.com")}}
         </div>
           
-        <div class="Brazilian-form-derecha form-group">
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class="">Identificacion</label>
           {{form.employee_id(class="form-control form-control-md", placeholder="Ej: 1629")}}
         </div>
           
-        <div class="Brazilian-form-izquierda form-group">
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Dirección</label>
           {{form.address(class="form-control form-control-md", placeholder="Ej: Juramento")}}
         </div>
           
-        <div class="Brazilian-form-derecha form-group">
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class="">Genero</label>
           {{form.gender(class="form-control form-control-md")}}
         </div>  
-        <div class="Brazilian-form-izquierda form-group">
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Dependencia</label>
           {{form.branch(class="form-control form-control-md")}}
         </div>  
-        <div class="Brazilian-form-derecha form-group">
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class="">Cargo</label>
           {{form.job_title(class="form-control form-control-md")}}
         </div>  
           
-        <div class="Brazilian-form-izquierda form-group">
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Tipo de contrato</label>
           {{form.contract(class="form-control form-control-md", placeholder="Ej: Indefinido")}}
         </div>  
-        <div class="Brazilian-form-derecha form-group">
+
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class="">Salario</label>
-          {{form.salary(class="form-control form-control-md", placeholder="Ej: $2000")}}
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            {{form.salary(class="form-control form-control-md", placeholder="Ej: $2000")}}
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
         </div>
-        <div class="Brazilian-form-derecha form-group">
+
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class="">Fecha de terminacion</label>
           {{form.contract_end(class="form-control form-control-md", type="date")}}
         </div> 
-        <div class="Brazilian-form-izquierda form-group">
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Fecha de inicio</label>
           {{form.contract_start(class="form-control form-control-md", type="date")}}
         </div>  
-        <div class="Brazilian-form-izquierda form-group">
+        <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Contrasena</label>
-          {{form.password(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+          {{form.password1(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
         </div> 
-        <div class="Brazilian-form-derecha form-group">
+        <div class="Brazilian-form-derecha form-group col-md-6">
           <label class=""> Confirma la Contrasena</label>
           {{form.password2(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
         </div> 
