@@ -21,17 +21,19 @@
     <link rel="stylesheet" href="../static/assets/css/default-css.css">
     <link rel="stylesheet" href="../static/assets/css/styles.css">
     <link rel="stylesheet" href="../static/assets/css/responsive.css">
-    <link rel="stylesheet" type="text/css"   href="../static/css/estilos.css"/>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
-  
-    <!-- modernizr css -->
-    <script src="../static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../static/js/menu.js"></script>
-    <!-- import -->
-    <link rel="import" href="dashboard.html" />
+    <link rel="stylesheet" type="text/css" href="../static/css/estilos.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<!-- modernizr css -->
+<script src="../static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../static/js/menu.js"></script>
+<!-- import -->
+<link rel="import" href="dashboard.html" />
 </head>
 
 <body class="body-bg">
@@ -91,14 +93,15 @@
                                 <ul id="nav_menu">
                                     <li>
                                         <a href="/dash"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                        
+
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)"><i class="ti-layout-sidebar-left"></i><span>Empleados</span></a>
+                                        <a href="javascript:void(0)"><i
+                                                class="ti-layout-sidebar-left"></i><span>Empleados</span></a>
                                         <ul class="submenu">
                                             <li><a href="/register">Crear Empleado</a></li>
                                             <li><a href="linechart.html">Buscar Empleado</a></li>
-    
+
                                         </ul>
                                     </li>
                                     <li>
@@ -156,7 +159,20 @@
         <!-- <div w3-include-html="content.html"></div> -->
         <div class="main-content-inner" id="main-content-inner">
             <div class="container mt-4" id="container">
-                {% block content %} 
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                {% block content %}
                 {% endblock %}
             </div>
         </div>
@@ -164,7 +180,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Brazilian  Fast Food 2021.
+                <p>© Brazilian Fast Food 2021.
                 </p>
             </div>
         </footer>
@@ -349,7 +365,7 @@
         </div>
     </div>
     <!-- offset area end -->
-    
+
     <!-- jquery latest version -->
     <script src="../static/assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
