@@ -16,11 +16,16 @@ class User(UserMixin):
         return '<User {}>'.format(self.email)
 
 class Employee(UserMixin):
-    def __init__(self, id, name, email, password, is_admin=False):
+    def __init__(self, id, name, email, password, address,branch,job,contract,salary,is_admin=False):
         self.id = id
         self.name = name
         self.email = email
         self.password = generate_password_hash(password)
+        self.address = address
+        self.branch = branch
+        self.job = job
+        self.contract = contract
+        self.salary = salary
         self.is_admin = is_admin
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -30,6 +35,7 @@ class Employee(UserMixin):
         return '<User {}>'.format(self.email)
 
 users = []
+employees =[]
 users.append(User(len(users) + 1, "moco", "admin", "admin",True))
 def get_user(email):
     for user in users:
