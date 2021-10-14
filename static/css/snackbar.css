@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora");
+
+.snackbar {
+    font-family: "Open Sans", sans-serif;
+    /* Por defecto escondido */
+    opacity: 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    /* Estilos, posicionar al fondo*/
+    min-width: 250px;
+    background-color: #333; 
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed;
+
+    /* Position */
+    z-index: 3;
+    left: 10px;
+    bottom: 30px;
+
+    /* Animación */
+    -webkit-animation: fadein 0.5s forwards;
+    animation: fadein 0.5s forwards;
+}
+
+.snack_button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+    margin:0px 5px 0px 2px; 
+    background-color: #222;
+}
+
+.hide_snack {
+    -webkit-animation: fadeout 0.5s forwards;
+    animation: fadeout 0.5s forwards;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0px; opacity: 0;}
+}

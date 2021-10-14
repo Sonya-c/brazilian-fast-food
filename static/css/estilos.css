@@ -1,44 +1,42 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 .Brazilian-container {
-  margin-top: 50px;
   margin: 20px auto;
 }
 
+
 #Brazilian-checkout {
-  z-index: 100001;
+  z-index: 10;
   width: 700px;
   height: 100%;
   min-height: 100%;
-  background: 0 0 #ffffff;
+  
+  background: #deede6;
   border-radius: 8px;
-  border: 1px solid #dedede;
+  border: 1px solid #deedee;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  background: #dee2e6;
-
-
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #Brazilian-checkout > h1 {
   margin: 0;
   padding: 20px;
   text-align: center;
-  background: #EEF2F4;
-  color: #5D6F78;
+  background: #deede6;
+  color: #396651;
   font-size: 40px;
   font-weight: 300;
-  border-bottom: 1px solid #DEDEDE;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background: #dee2e6;
-
+  border-radius: 8px;
 }
 
 .Brazilian-form {
   padding: 1.4em;
   margin: 0 25px 25px;
-  background: #dee2e6;
-
 }
 
 .Brazilian-form-izquierda {
@@ -58,6 +56,8 @@
   margin-bottom: 2px;
   display: block;
   font-size: 14px;
+  font-size: medium;
+  margin: 10px 0px 10px 0px;
 }
 
 .Brazilian-form input {
@@ -70,13 +70,30 @@
 
 .Brazilian-form input:focus {
   border-color: #b0e5e3 ;
-  background-color: #EEF9F9 ;
+}
+
+.Brazilian-form textarea {
+  font-family: inherit;
+  color: #46545C;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  border-radius: 0.25em;
+  outline: none;
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 5px;
+  line-height: 20px;
+  box-sizing: border-box;
+  font-size: medium;
 }
 
 #Brazilian-button {
+  max-width: 100px;
+  margin: auto;
   outline: 0 ;
   height: 42px;
-  font-size: 16px;
+  font-size: large;
   background-color: #064254 ;
   border: none;
 }
