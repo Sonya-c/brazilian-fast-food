@@ -89,6 +89,7 @@ def show_signup_form():
         email = form.email.data
         password = form.password.data
         # Creamos el usuario y lo guardamos
+        print(form.gender.data)
         user = User(len(users) + 1, name, email, password)
         users.append(user)
         # Dejamos al usuario logueado
