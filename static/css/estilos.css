@@ -70,7 +70,22 @@ body, html {
 
 .Brazilian-form input:focus {
   border-color: #b0e5e3 ;
-  background-color: #EEF9F9 ;
+}
+
+.Brazilian-form textarea {
+  font-family: inherit;
+  color: #46545C;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  border-radius: 0.25em;
+  outline: none;
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 5px;
+  line-height: 20px;
+  box-sizing: border-box;
+  font-size: medium;
 }
 
 #Brazilian-button {

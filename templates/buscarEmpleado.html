@@ -143,25 +143,29 @@
                             </div>
 
                             <div class="modal-body">
-                                <div class="card-body">
-                                    <h4 class="header-title mb-0">Desempeño</h4>
-                                    <input type="number" name="" id="">
-                                </div>
-
-                                <div class="card-body">
-                                    <h4 class="header-title mb-0">Puntaje</h4>
-                                    <input type="number" name="" id="">
-                                </div>
-
-                                <div class="card-body">
-                                    <h4 class="header-title mb-0">Mensaje</h4>
-                                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                                <form class="Brazilian-form" action="submit">
+        
+                                    <div class="Brazilian-form-izquierda form-group">
+                                      <label class="">Desempeño</label>
+                                      <input class="form-control"  type="text" required>
+                                    </div>
+                                      
+                                    <div class="Brazilian-form-derecha form-group">
+                                      <label class="">Puntaje</label>
+                                      <input class="form-control" type="number" required>
+                                    </div>
+                                      
+                                    <div class="form-group">
+                                      <label class="">Mensaje</label>
+                                      <textarea name="mensaje-retroalimentacion"></textarea>
+                                    </div>
+                                      
+                                    <button id="Brazilian-button" class="btn btn-block btn-success submit-button" type="submit">
+                                      <span class="submit-button-lock"></span>
+                                      <span class="align-middle">Guardar</span>
+                                    </button>
+                              
+                                  </form>
                             </div>
 
                         </div>
