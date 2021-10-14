@@ -29,7 +29,7 @@ class LessEqualToDate(object):  # --> Change to 'LessThan'
         except KeyError:
             raise ValidationError(field.gettext("Invalid field name '%s'.") % self.fieldname)
         
-        if field.data > other.data:  #  --> Change to >= from !=
+        if field.data < other.data:  #  --> Change to >= from !=
             d = {
                 'other_label': hasattr(other, 'label') and other.label.text or self.fieldname,
                 'other_name': self.fieldname
