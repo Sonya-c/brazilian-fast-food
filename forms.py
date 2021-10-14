@@ -1,6 +1,6 @@
 from flask_wtf.form import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField
-from wtforms.validators import DataRequired, Email, length
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField
+from wtforms.validators import EqualTo, Length, Email, DataRequired, NumberRange
 
 
 class LoginForm(FlaskForm):
@@ -16,12 +16,12 @@ class SignupForm(FlaskForm):
     employee_id = StringField(label='Numero de Identificacion', validators=[Length(min=6,message='La Longitud del texto ingresado no corresponde con un numero de identificacion'), DataRequired('El campo de identificacion es requerido')])
     address = StringField(label='Direccion de residencia', validators=[DataRequired('El campo de direccion no puede estar vacio'), Length(min=6)])
     gender = SelectField(label="Sexo", choices=[('M', 'Masculino'), ('F', 'Femenino')], validate_choice=True, validators=[DataRequired()])
-    branch = SelectField(label="Dependencia",validate_choice=True, validators=[DataRequired()])
-    job_title = SelectField(label="Cargo",validate_choice=True, validators=[DataRequired()])
+    branch = SelectField(label="Dependencia",choices=['1'],validate_choice=True, validators=[DataRequired()])
+    job_title = SelectField(label="Cargo",choices=['mesero'],validate_choice=True, validators=[DataRequired()])
     contract = StringField(label='Num. de Contrato', validators=[DataRequired(), Length(min=6, message='El Valor ingresado no corresponde a un numero de contrato valido')])
     salary = IntegerField(label='Salario', validators=[DataRequired('El campo de salario no puede estar vacio'), NumberRange(min=1,message='El salario especificado debe ser superior a $1')])
-    contract_start = DateField(label='Fecha Inicio Contrato', validators=[DataRequired('Debe especificar uns fecha de inicio de contrato')])
-    contract_end = DateField(label='Fecha Finalizacion Contrato', validators=[DataRequired('Debe especificar uns fecha de inicio de contrato'), LessEqualToDate(fieldname='contract_start',message='La fecha de inicio de contrato no puede ser posterior a la fecha final')])
+    contract_start = DateField(label='Fecha Inicio Contrato', validators=[DataRequired('Debe especificar una fecha de inicio de contrato')])
+    contract_end = DateField(label='Fecha Finalizacion Contrato', validators=[DataRequired('Debe especificar una fecha de inicio de contrato'), NumberRange(min=contract_start,message='La fecha de inicio de contrato no puede ser posterior a la fecha final')])
     password1 = PasswordField(label='Contrasena', validators=[DataRequired('La contrasena no puede ser vacia')])
     password2 = PasswordField(label='Confirme la contrasena', validators=[DataRequired('La confirmacion de contrasena no puede ser vacia'), EqualTo(fieldname='password1',message='Las contrasenas provistas no coinciden')])
     
