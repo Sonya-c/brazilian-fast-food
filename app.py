@@ -64,8 +64,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = get_user(form.email.data)
-        print(form.email.data)
-        print("pass: "+ form.password.data)
+
  
         if user is not None and user.check_password(form.password.data):
             

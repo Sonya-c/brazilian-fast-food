@@ -48,4 +48,4 @@ def get_user(email):
         if user.email == email.capitalize():
             return user
 
-    return None,None
+    return None
