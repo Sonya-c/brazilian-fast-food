@@ -7,7 +7,6 @@ from forms import LoginForm,SignupForm
 from models import users,User,get_user
 
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY']= 'AQUI VA LA CLAVE MAESTRA'
 login_manager = LoginManager(app)
@@ -60,7 +59,7 @@ def editar():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
     form = LoginForm()
     if form.validate_on_submit():
         user = get_user(form.email.data)
@@ -80,9 +79,10 @@ def login():
 
 
 @app.route("/signup/", methods=["GET", "POST"])
+@login_required
 def show_signup_form():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
+    #if current_user.is_authenticated:
+    #    return redirect(url_for('index'))
     form = SignupForm()
     if form.validate_on_submit():
         name = form.name.data
@@ -97,7 +97,7 @@ def show_signup_form():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template("signup_form.html", form=form)
+    return render_template("register.html", form=form)
 
 #logout ------------------------------------
 @app.route('/logout')
