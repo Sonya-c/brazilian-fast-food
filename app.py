@@ -10,8 +10,6 @@ from forms import LoginForm,SignupForm
 
 
 
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY']= '\x01\xe3i\x1c\xfc\x1c\xa3E\xc1%\xbfr\x9f\xd7\xdb\xc1\x11#t4\xec(\x8a\xed'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'

@@ -40,6 +40,7 @@ class Employee(db.Model):
     _tablename_ = 'employess'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(80), unique=True,nullable=False)
+    employee_id= db.Column(db.String(80), unique=True,nullable=False)
     gender = db.Column(db.String(1), nullable=False)
     address = db.Column(db.String(100), nullable=False)
     branch = db.Column(db.String(100), nullable=False)
