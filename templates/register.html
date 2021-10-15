@@ -4,7 +4,7 @@
     <div id="Brazilian-checkout">
       <h1>Registrar Empleado</h1>
       
-      <form class="Brazilian-form" method="post">
+      <form class="Brazilian-form" method="POST">
         {{ form.hidden_tag() }}
         <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Nombre</label>
@@ -79,7 +79,7 @@
           {{form.password2(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
         </div> 
         <br> 
-        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button", type="submit") }}  
+        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }}  
       </form>
     </div> 
   </div>

@@ -4,8 +4,6 @@ from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectFie
 from wtforms import validators
 from wtforms.validators import EqualTo, Length, Email, DataRequired, NumberRange, ValidationError
 
-
-
 class LoginForm(FlaskForm):
     email = StringField('Usuario', validators=[DataRequired('El campo usuario no puede estar vacio')])
     password = PasswordField('Password', validators=[DataRequired('El campo de contraeña no puede estar vacio')])
@@ -27,7 +25,7 @@ class SignupForm(FlaskForm):
     contract_start = DateField('Fecha inicial',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     contract_end = DateField('Fecha final',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     
-    password1 = PasswordField('password1',validators=[DataRequired(),EqualTo('password2',message='contraseña no coinciden')])  
+    password1 = PasswordField('password1',validators=[DataRequired()])  
     password2 = PasswordField('password2',validators=[DataRequired()])  
     submit = SubmitField('Crear usuario' )
 

@@ -1,11 +1,14 @@
 {% extends "base.html" %}
+
 {% block content %}
 
     <div class="row">
         <div class="col-12">
+
             <div class="card">
                 <div class="card-body">
                     <!-- <form autocomplete="off" onSubmit="buscar()"> -->
+                        
                         <div class="form-row align-items-center">
                             <div class="col-sm-3 my-1"></div>
                             <div class="col-sm-3 my-1">
@@ -27,10 +30,10 @@
                             <div class="col-sm-1 my-1">
                                 <div class="fw-icons"><a href="register"><i class="fa fa-user-plus"></i> </a></div>
                             </div>
-                            
                         </div>
                     <!-- </form> -->
                 </div>
+                
                 <div class="card-body contentBuscar" id="contentBuscar">
                     <div class="single-table">
                         <div class="table-responsive">
@@ -44,35 +47,24 @@
                                         <th scope="col">action</th>
                                     </tr>
                                 </thead>
+                                <!-- El modelo no tiene documento :'c-->
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Sonya Castillo</td>
-                                        <td>123321</td>
-                                        <td>Founder & CEO</td>
-                                        <td>
-                                            <ul class="d-flex justify-content-center">
-                                                <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
-                                                <li class="mr-3"><a href="#" class="text-danger" data-toggle="modal" data-target="#exampleDelete"><i class="ti-trash"></i></a></li>
-                                                <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#exampleRetro"><i class="fa fa-rupee"></i></a></li>
-                                                <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#createRetro"><i class="fas fa-star"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Cesar De la Rosa</td>
-                                        <td>365234</td>
-                                        <td>Head Chef</td>
-                                        <td>
-                                            <ul class="d-flex justify-content-center">
-                                                <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
-                                                <li class="mr-3"><a href="#" class="text-danger" data-toggle="modal" data-target="#exampleDelete"><i class="ti-trash"></i></a></li>
-                                                <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#exampleRetro"><i class="fa fa-rupee"></i></a></li>
-                                                <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#createRetro"><i class="fas fa-star"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                    {% for employeer in employeers%}
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>{{ employeer.name }}</td>
+                                            <td>{{ employerr.doc}}</td>
+                                            <td>{{ employerr.job}}</td>
+                                            <td>
+                                                <ul class="d-flex justify-content-center">
+                                                    <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
+                                                    <li class="mr-3"><a href="#" class="text-danger" data-toggle="modal" data-target="#exampleDelete"><i class="ti-trash"></i></a></li>
+                                                    <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#exampleRetro"><i class="fa fa-rupee"></i></a></li>
+                                                    <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#createRetro"><i class="fas fa-star"></i></a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
                                     
                                 </tbody>
                             </table>
