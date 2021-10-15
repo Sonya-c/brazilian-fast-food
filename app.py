@@ -4,26 +4,30 @@ from flask_login import login_user, logout_user, current_user, login_manager
 from flask_login.utils import login_required
 from werkzeug.urls import url_parse
 from forms import LoginForm,SignupForm
-from models import users,User,get_user
+
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY']= '\x01\xe3i\x1c\xfc\x1c\xa3E\xc1%\xbfr\x9f\xd7\xdb\xc1\x11#t4\xec(\x8a\xed'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 login_manager = LoginManager(app)
 #login_manager.login_view = ""
 
-@login_manager.user_loader
-def load_user(user_id):
-    for user in users:
-        if user.id == int(user_id):
-            return user
-    return None
 
-# init SQLAlchemy so we can use it later in our models
-#db = SQLAlchemy()
+
+# init SQLAlchemy 
+db = SQLAlchemy(app)
+from models import User
+
 
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+
+#user loader ----------------
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get_by_id(int(user_id))
 
 @app.route('/',methods=['GET','POST'])
 def index():
@@ -58,14 +62,18 @@ def editar():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    global is_employee
+    user = User.get_by_id(0)
+    print(user)
+    if user is  None:
+        user = User(id=0,name='admin', email='admin',is_admin=True)
+        user.set_password('admin')
+        user.save()
+    
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = get_user(form.email.data)
-
- 
+        user = User.get_by_email(form.email.data)
         if user is not None and user.check_password(form.password.data):
             
             login_user(user, remember=form.remember_me.data)
