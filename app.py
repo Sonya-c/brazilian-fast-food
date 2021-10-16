@@ -84,6 +84,8 @@ def login():
             #return redirect(next_page)
     return render_template('login.html', form=form)
 
+#--------------------CREAR EMPLEADO-------------------------------#
+
 @app.route("/signup/", methods=["GET", "POST"])
 @login_required
 def show_signup_form():
@@ -93,20 +95,33 @@ def show_signup_form():
     
     #print(f"app.show_sign() MENSAJE {form.gender.data}")
     #print(f"app.show_signup_form MENSAJE {form.contract_start.data}")
+    if form.is_submitted():
+        print ("submitted")
+
+    if form.validate():
+        print ("valid")
+
+    print(form.errors)
 
     if form.validate_on_submit():
-        print('app.show_sign() MENSAJE sending employee')
+        print('error: ',form.errors)
+        print ('OK')
+        list_form = [form.email_address,form.gender.data,form.address.data,form.branch.data,form.job_title.data
+        ,form.contract.data,form.salary.data]
 
-        employee = Employee(email = form.email_address,
-            gender = form.gender,
-            address = form.address,
-            branch = form.branch,
-            job = form.job_title,
-            contract = form.contract,
-            salary = form.salary,
-            start = form.contract_start,
-            end = form.contract_end)
-
+        employee = Employee(
+            email = form.email_address.data,
+            employee_id = form.employee_id.data,
+            gender = form.gender.data,
+            address = form.address.data,
+            branch = form.branch.data,
+            job = form.job_title.data,
+            contract = form.contract.data,
+            salary = 56465,#form.salary.data,
+            start = form.contract_start.data,
+            end = form.contract_end.data)
+        for i in list_form:
+            print (i,type(i))
         employee.save()
        
     return render_template("register.html", form=form)

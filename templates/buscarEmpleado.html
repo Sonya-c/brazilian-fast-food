@@ -52,9 +52,9 @@
                                     {% for employeer in employees%}
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>{{ employees.name }}</td>
-                                            <td>{{ employees.employee_id}}</td>
-                                            <td>{{ employees.job}}</td>
+                                            <td>{{ employeer.email }}</td>
+                                            <td>{{ employeer.employee_id}}</td>
+                                            <td>{{ employeer.job}}</td>
                                             <td>
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>

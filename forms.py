@@ -1,7 +1,9 @@
 import datetime
+
 from flask_wtf.form import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField, widgets
 from wtforms import validators
+from wtforms.fields.core import DecimalField
 from wtforms.validators import EqualTo, Length, Email, DataRequired, NumberRange, ValidationError
 
 class LoginForm(FlaskForm):
@@ -21,7 +23,7 @@ class SignupForm(FlaskForm):
     job_title = SelectField(label="Cargo",choices=['mesero'],validate_choice=True, validators=[DataRequired()])
     contract = StringField(label='Num. de Contrato', validators=[DataRequired(), Length(min=6, message='El Valor ingresado no corresponde a un numero de contrato valido')])
     
-    salary = IntegerField(label='Salario', validators=[DataRequired('El campo de salario no puede estar vacio'), NumberRange(min=1,message='El salario especificado debe ser superior a $1')])
+    salary = DecimalField(validators=[DataRequired()])
     contract_start = DateField('Fecha inicial',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     contract_end = DateField('Fecha final',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     
