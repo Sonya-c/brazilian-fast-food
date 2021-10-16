@@ -47,7 +47,7 @@ def register():
 def buscar():
     print('session: '+str(current_user.is_authenticated))
     
-    return render_template('buscarEmpleado.html', employees = Employee.getAll())
+    return render_template('buscarEmpleado.html', employees = Employee.getAll(),numbers = len(Employee.getAll()))
     
 @app.route('/editar')
 @login_required

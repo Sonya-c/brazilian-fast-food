@@ -48,13 +48,15 @@
                                     </tr>
                                 </thead>
                                 <!-- El modelo no tiene documento :'c-->
+                 
                                 <tbody>
-                                    {% for employeer in employees%}
+                                    {% for i in range(numbers)%}
+                                
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>{{ employeer.email }}</td>
-                                            <td>{{ employeer.employee_id}}</td>
-                                            <td>{{ employeer.job}}</td>
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{ employees[i].email }}</td>
+                                            <td>{{ employees[i].employee_id}}</td>
+                                            <td>{{ employees[i].job}}</td>
                                             <td>
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
@@ -64,6 +66,7 @@
                                                 </ul>
                                             </td>
                                         </tr>
+                                        <script>counter++;</script>
                                     {% endfor %}
                                     
                                 </tbody>
