@@ -49,12 +49,12 @@
                                 </thead>
                                 <!-- El modelo no tiene documento :'c-->
                                 <tbody>
-                                    {% for employeer in employeers%}
+                                    {% for employeer in employees%}
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>{{ employeer.name }}</td>
-                                            <td>{{ employerr.doc}}</td>
-                                            <td>{{ employerr.job}}</td>
+                                            <td>{{ employees.name }}</td>
+                                            <td>{{ employees.employee_id}}</td>
+                                            <td>{{ employees.job}}</td>
                                             <td>
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
