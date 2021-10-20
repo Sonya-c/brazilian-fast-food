@@ -25,6 +25,9 @@ class User(db.Model,UserMixin):
 
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+
     def __repr__(self):
         return '<User {}>'.format(self.email)
 
@@ -36,9 +39,15 @@ class User(db.Model,UserMixin):
     def get_by_email(email):
         return User.query.filter_by(email=email).first()
 
+    @staticmethod
+    def delete_user(email):
+        db.session.delete(User.query.filter_by(email=email).first())
+
 class Employee(db.Model):
     _tablename_ = 'employess'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+    lastname = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(80), unique=True,nullable=False)
     employee_id= db.Column(db.String(80), unique=True,nullable=False)
     gender = db.Column(db.String(1), nullable=False)
@@ -57,6 +66,11 @@ class Employee(db.Model):
     
     def __repr__(self):
         return '<Employee {}>'.format(self.email)
+
+    @staticmethod
+    def delete_employee(email):
+        db.session.delete(Employee.query.filter_by(email=email).first())
+        
 
     @staticmethod
     def getAll():

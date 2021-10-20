@@ -19,7 +19,7 @@ class SignupForm(FlaskForm):
     employee_id = StringField(label='Numero de Identificacion', validators=[Length(min=6,message='La Longitud del texto ingresado no corresponde con un numero de identificacion'), DataRequired('El campo de identificacion es requerido')])
     address = StringField(label='Direccion de residencia', validators=[DataRequired('El campo de direccion no puede estar vacio'), Length(min=6)])
     gender = SelectField(label="Sexo", choices=[('M', 'Masculino'), ('F', 'Femenino')], validate_choice=True, validators=[DataRequired()])
-    branch = SelectField(label="Dependencia",choices=['1'],validate_choice=True, validators=[DataRequired()])
+    branch = SelectField(label="Dependencia",choices=['1','2'],validate_choice=True, validators=[DataRequired()])
     job_title = SelectField(label="Cargo",choices=['mesero'],validate_choice=True, validators=[DataRequired()])
     contract = StringField(label='Num. de Contrato', validators=[DataRequired(), Length(min=6, message='El Valor ingresado no corresponde a un numero de contrato valido')])
     
@@ -27,9 +27,14 @@ class SignupForm(FlaskForm):
     contract_start = DateField('Fecha inicial',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     contract_end = DateField('Fecha final',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     
-    password1 = PasswordField('password1',validators=[DataRequired()])  
+    password1 = PasswordField('password1',validators=[DataRequired(),EqualTo('password2')])  
     password2 = PasswordField('password2',validators=[DataRequired()])  
     submit = SubmitField('Crear usuario' )
+
+class deleteForm(FlaskForm):
+    email = DateField()
+
+
 
 def validate_contract_end(self, filed):
         if filed.data <= self.contract_start.data:

@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-sm-4 my-1"></div>
                             <div class="col-sm-1 my-1">
-                                <div class="fw-icons"><a href="register"><i class="fa fa-user-plus"></i> </a></div>
+                                <div class="fw-icons"><a href="signup"><i class="fa fa-user-plus"></i> </a></div>
                             </div>
                         </div>
                     <!-- </form> -->
@@ -54,7 +54,7 @@
                                 
                                         <tr>
                                             <th scope="row">{{i+1}}</th>
-                                            <td>{{ employees[i].email }}</td>
+                                            <td>{{ employees[i].name }}</td>
                                             <td>{{ employees[i].employee_id}}</td>
                                             <td>{{ employees[i].job}}</td>
                                             <td>
@@ -66,7 +66,7 @@
                                                 </ul>
                                             </td>
                                         </tr>
-                                        <script>counter++;</script>
+                                     
                                     {% endfor %}
                                     
                                 </tbody>
@@ -89,7 +89,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" onclick="eliminar()">OK</button>
+                                <form method="post"><button type="submit" class="btn btn-primary">OK</button></form>
+                                
                             </div>
                         </div>
                     </div>

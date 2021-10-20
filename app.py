@@ -3,7 +3,6 @@ from flask_login import LoginManager
 from flask_login import login_user, logout_user, current_user, login_manager
 from flask_login.utils import login_required
 
-from werkzeug.urls import url_parse
 from flask_sqlalchemy import SQLAlchemy
 
 from forms import LoginForm,SignupForm
@@ -34,21 +33,30 @@ def index():
 @app.route('/dash')
 @login_required
 def dashboard():
+    print(str(current_user.is_admin))
     return render_template('dashboard.html')
 
-@app.route('/register')
-@login_required
-def register():
-    print('session: '+str(current_user.is_authenticated))
-    return render_template('register.html')
+# @app.route('/register')
+# @login_required
+# def register():
+#     return user_unauthorized
+#     if current_user.is_admin==True:
+        
+#         print('session: '+str(current_user.is_authenticated))
+#         return render_template('register.html')
+    
 
-@app.route('/buscar')
+@app.route('/buscar',methods=['GET', 'POST'])
 @login_required
 def buscar():
-    print('session: '+str(current_user.is_authenticated))
-    
-    return render_template('buscarEmpleado.html', employees = Employee.getAll(),numbers = len(Employee.getAll()))
-    
+    if current_user.is_admin==True:
+        if request.method == 'POST':
+            pass
+        else:
+            return render_template('buscarEmpleado.html', employees = Employee.getAll(),numbers = len(Employee.getAll()))
+
+    return 'ACCESO NO AUTORIZADO'
+
 @app.route('/editar')
 @login_required
 def editar():
@@ -71,7 +79,7 @@ def login():
     
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.get_by_email(form.email.data)
+        user = User.get_by_email(form.email.data.lower())
         if user is not None and user.check_password(form.password.data):
             
             login_user(user, remember=form.remember_me.data)
@@ -104,27 +112,33 @@ def show_signup_form():
     print(form.errors)
 
     if form.validate_on_submit():
-        print('error: ',form.errors)
-        print ('OK')
-        list_form = [form.email_address,form.gender.data,form.address.data,form.branch.data,form.job_title.data
-        ,form.contract.data,form.salary.data]
-
-        employee = Employee(
-            email = form.email_address.data,
-            employee_id = form.employee_id.data,
-            gender = form.gender.data,
-            address = form.address.data,
-            branch = form.branch.data,
-            job = form.job_title.data,
-            contract = form.contract.data,
-            salary = 56465,#form.salary.data,
-            start = form.contract_start.data,
-            end = form.contract_end.data)
-        for i in list_form:
-            print (i,type(i))
-        employee.save()
-       
-    return render_template("register.html", form=form)
+        # print('error: ',form.errors)
+        # print ('OK')
+        # list_form = [form.email_address,form.gender.data,form.address.data,form.branch.data,form.job_title.data
+        # ,form.contract.data,form.salary.data]
+        user = User.get_by_email(form.email_address.data)
+        if user is None:
+            employee = Employee(
+                name=form.name.data,
+                lastname=form.lastname.data,
+                email = form.email_address.data.lower(),
+                employee_id = form.employee_id.data,
+                gender = form.gender.data,
+                address = form.address.data,
+                branch = form.branch.data,
+                job = form.job_title.data,
+                contract = form.contract.data,
+                salary = 56465,#form.salary.data,
+                start = form.contract_start.data,
+                end = form.contract_end.data)
+            employee.save()
+            user = User(name=form.name.data, email=form.email_address.data,is_admin=False)
+            user.set_password(form.password1.data)
+            user.save()
+            
+    if current_user.is_admin==True:
+        return render_template("register.html", form=form)
+    return "ACCESO NO AUTORIZADO"
 
 #logout ------------------------------------
 @app.route('/logout')
