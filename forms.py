@@ -31,8 +31,7 @@ class SignupForm(FlaskForm):
     password2 = PasswordField('password2',validators=[DataRequired()])  
     submit = SubmitField('Crear usuario' )
 
-class deleteForm(FlaskForm):
-    email = DateField()
+
 
 
 

@@ -50,10 +50,14 @@ def dashboard():
 @login_required
 def buscar():
     if current_user.is_admin==True:
+
         if request.method == 'POST':
-            pass
+            User.delete_user(request.form['delete_email'])
+            Employee.delete_employee(request.form['delete_email'])
+            return "Usuario Eliminado Exitosamente!"
         else:
-            return render_template('buscarEmpleado.html', employees = Employee.getAll(),numbers = len(Employee.getAll()))
+            form=SignupForm()
+            return render_template('buscarEmpleado.html',form=form,employees = Employee.getAll(),numbers = len(Employee.getAll()))
 
     return 'ACCESO NO AUTORIZADO'
 

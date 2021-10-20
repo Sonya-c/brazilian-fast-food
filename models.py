@@ -41,7 +41,8 @@ class User(db.Model,UserMixin):
 
     @staticmethod
     def delete_user(email):
-        db.session.delete(User.query.filter_by(email=email).first())
+        User.query.filter_by(email=email).delete()
+        db.session.commit()
 
 class Employee(db.Model):
     _tablename_ = 'employess'
@@ -70,6 +71,7 @@ class Employee(db.Model):
     @staticmethod
     def delete_employee(email):
         db.session.delete(Employee.query.filter_by(email=email).first())
+        db.session.commit()
         
 
     @staticmethod
