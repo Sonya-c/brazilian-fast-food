@@ -98,6 +98,7 @@
                                                     <div class="modsal-body">
                                                         <form class="Brazilian-form" action="submit">
                                                             {{ form.csrf_token()         }}
+                                                            {{ form.hidden_tag() }}
                                                             <div class="Brazilian-form-izquierda form-group">
                                                               <label class="">Nombre</label>
                                                               
