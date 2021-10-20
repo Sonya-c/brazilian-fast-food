@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-sm-4 my-1"></div>
                             <div class="col-sm-1 my-1">
-                                <div class="fw-icons"><a href="register"><i class="fa fa-user-plus"></i> </a></div>
+                                <div class="fw-icons"><a href="signup"><i class="fa fa-user-plus"></i> </a></div>
                             </div>
                         </div>
                     <!-- </form> -->
@@ -48,13 +48,15 @@
                                     </tr>
                                 </thead>
                                 <!-- El modelo no tiene documento :'c-->
+                 
                                 <tbody>
-                                    {% for employeer in employees%}
+                                    {% for i in range(numbers)%}
+                                
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>{{ employees.name }}</td>
-                                            <td>{{ employees.employee_id}}</td>
-                                            <td>{{ employees.job}}</td>
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{ employees[i].name }}</td>
+                                            <td>{{ employees[i].employee_id}}</td>
+                                            <td>{{ employees[i].job}}</td>
                                             <td>
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
@@ -64,6 +66,7 @@
                                                 </ul>
                                             </td>
                                         </tr>
+                                     
                                     {% endfor %}
                                     
                                 </tbody>
@@ -86,7 +89,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" onclick="eliminar()">OK</button>
+                                <form method="post"><button type="submit" class="btn btn-primary">OK</button></form>
+                                
                             </div>
                         </div>
                     </div>
