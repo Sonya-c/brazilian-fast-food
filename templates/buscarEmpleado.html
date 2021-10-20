@@ -75,11 +75,11 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>Desea eliminar el empleado?
-                                                        </p>
+                                                        </p><p>{{employees[i].email}}</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <form  method="post"> <input type="text" name="delete_email" value={{employees[i].email}}>
+                                                        <form  method="post"> 
                                                             <button type="submit" class="btn btn-primary">OK</button></form>
                                                         
                                                     </div>
@@ -130,34 +130,28 @@
                                                             </div>  
                                                             <div class="Brazilian-form-izquierda form-group">
                                                               <label class="">Dependencia</label>
-                                                              <select class="form-control" value={{employees[i].branch}} required>
-                                                                <option>Seleccione</option>
-                                                               
-                                                              </select>
+                                                              {{form.branch(class="form-control"  )}}
                                                             </div>  
                                                             <div class="Brazilian-form-derecha form-group">
                                                               <label class="">Cargo</label>
-                                                              <select class="form-control" value={{employees[i].job}} required>
-                                                                <option>Seleccione</option>
-                                                    
-                                                              </select>
+                                                              {{form.job_title(class="form-control" )}}
                                                             </div>  
                                                               
                                                             <div class="Brazilian-form-izquierda form-group">
                                                               <label class="">Tipo de contrato</label>
-                                                              <input class="form-control" type="text" value={{employees[i].contract}} required>
+                                                              {{form.contract(class="form-control" )}}
                                                             </div>  
                                                             <div class="Brazilian-form-derecha form-group">
                                                               <label class="">Salario</label>
-                                                              <input class="form-control" type="number" value={{employees[i].salary}} required>
+                                                              {{form.salary(class="form-control" )}}
                                                             </div>
                                                             <div class="Brazilian-form-derecha form-group">
                                                               <label class="">Fecha de inicio</label>
-                                                              <input class="form-control" type="date" value={{employees[i].start}} required>
+                                                              {{form.contract_start(class="form-control" )}}
                                                             </div> 
                                                             <div class="Brazilian-form-izquierda form-group">
                                                               <label class="">Fecha de terminacion</label>
-                                                              <input class="form-control" type="date" value={{employees[i].end}} required>
+                                                              {{form.contract_end(class="form-control" )}}
                                                             </div>   
                                                     
                                                            
