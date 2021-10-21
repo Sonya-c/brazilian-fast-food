@@ -50,6 +50,11 @@ def dashboard():
 def performance():
     return render_template('performance.html', employee = Performance.get_performance(current_user.email))
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', employee = Employee.getEmployee(current_user.email))
+
 @app.route('/buscar',methods=['GET', 'POST'])
 @login_required
 def buscar():

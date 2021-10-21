@@ -72,7 +72,10 @@ class Employee(db.Model):
     def delete_employee(email):
         db.session.delete(Employee.query.filter_by(email=email).first())
         db.session.commit()
-        
+
+    @staticmethod
+    def getEmployee(email):
+        return Employee.query.filter_by(email=email).first()
 
     @staticmethod
     def getAll():
