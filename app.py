@@ -48,7 +48,7 @@ def dashboard():
 @app.route('/performance')
 @login_required
 def performance():
-    return render_template('performance.html', employee = Performance.get_performance(current_user.email)
+    return render_template('performance.html', employee = Performance.get_performance(current_user.email))
 
 @app.route('/buscar',methods=['GET', 'POST'])
 @login_required
