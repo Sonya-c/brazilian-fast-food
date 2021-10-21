@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Stie</title>
+    <link rel="stylesheet" href="../static/css/log.css">
+    <link rel="stylesheet" href="../static/css/snackbar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+
+<body class="center-container">
+    <!-- partial:index.partial.html -->
+
+    <div class="container center-container">
+        <div class="welcome">
+            
+            <div class="pinkbox">
+                <div class="signin">
+                    <h1>Login</h1>
+                    <form action=""  class="more-padding" method="post" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.email(placeholder="Correo") }}<br>
+                        
+                        {% for error in form.email.errors %}
+                            <div class="snackbar">{{ error }}<span onclick="closeSnack(this)" class="snack_button"">x</span></div>
+                        {% endfor %}
+
+                        {{ form.password(placeholder="Contraseña") }}<br>
+                        {% for error in form.password.errors %}
+                            <div class="snackbar">{{ error }}<span onclick="closeSnack(this)" class="snack_button"">x</span></div>
+                        {% endfor %}
+                        
+                        {{ form.submit(class="button submit")}}
+                    </form>
+                </div>
+            </div>
+
+            <div class="leftbox">
+                <h2 class="title"><span>BRAZILIAN</span><br>FAST FOOD</h2>
+                <img class="flower" src="../static/images/logo.svg" />
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    <script src="../static/js/login.js"></script>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+</body>
+</html>
