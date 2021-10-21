@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../static/assets/css/styles.css">
     <link rel="stylesheet" href="../static/assets/css/responsive.css">
     <link rel="stylesheet" type="text/css"   href="../static/css/estilos.css"/>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  -->
+    
     <link rel="stylesheet" href="../static/assets/css/bootstrap2.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
   
@@ -34,9 +34,15 @@
     <script src="{{ url_for('static', filename='js/login.js') }}"></script>
     <!-- import -->
     <link rel="import" href="dashboard.html" />
+    <style>
+        .menu_employee{
+            display: {{em_display}};
+            
+        }
+    </style>
 </head>
 
-<body class="body-bg">
+<body class="">
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -49,122 +55,72 @@
     <!-- preloader area end -->
     <!-- main wrapper start -->
     
-    <div class="horizontal-main-wrapper">
-        <!-- main header logo -->
-        <div class="mainheader-area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-1">
-                        <div class="logo">
-                            <a href="/dash"><img src="../static/images/pngwing.com.png" alt="logo"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <h1 style="font-size: 1.7rem;margin-top:0;">BRAZILIAN FAST FOOD</h1>
-                    </div>
+    <div class="horizontal-main-wrapper d-flex flex-column min-vh-100">
 
-                    <!-- profile info & task notification -->
-                    <div class="col-md-4 clearfix text-right">
-                        <div class="d-md-inline-block d-block mr-md-4">
-                            <ul style="display: inline-block; margin-right: 10px" class="notification-area">
-                                <li id="full-view"><i class="ti-fullscreen"></i></li>
-                                <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
-                                <li class="settings-btn"><i class="ti-settings"></i></li>
-                                
-                                
-                            </ul>
+        <!-- Nav bar -->
+        <nav class="navbar shadow-sm navbar-dark navbar-expand-lg sticky-top bg-dark">
+            <a class="navbar-brand" href="/dash">
+              <img src="../static/images/pngwing.com.png" width="30" height="30" alt="" >
+              <span> Brazilian Fast Food</span>
+            </a>
 
-                            <div style="color: white; display: inline-block;" class="user-profile m-0">
-                                {{current_user.name}}
-                            </div>
-                            
-                            <a href="/logout"  ><i class="ti-close">Cerrar Sesion</i></a>
-                        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/dash"><i class="ti-dashboard"></i> Dashboard</a>
+                  </li>
+
+                  <li class="nav-item dropdown menu_employee" >
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Empleado
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/signup">Crear empleado</a>
+                      <a class="dropdown-item" href="/buscar">Buscar empleado</a>
                     </div>
-                </div>
+                  </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ProfileMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{current_user.name}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/profile">Ver Perfil</a>
+                      <a class="dropdown-item" href="/performance">Ver Desempeño</a>
+                      <a class="dropdown-item" href="/updatepassword">Cambiar Contraseña</a>
+                    </div>
+                  </li>
+
+                  <li class="nav-item">
+                      <div>
+                        <a class="nav-link" href="/logout"><i class="ti-close"></i> Salir</a>
+                      </div>
+                      
+                  </li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                  <button class="btn my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
-        </div>
+        
+        </nav>
 
-        <!-- main header area end -->
-        <!-- header area start menu -->
-        <div class="header-area header-bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-9  d-none d-lg-block">
-                        <div class="horizontal-menu">
-                            <nav>
-                                <ul id="nav_menu">
-                                    <li>
-                                        <a href="/dash"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                        
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)"><i class="ti-layout-sidebar-left"></i><span>Empleados</span></a>
-                                        <ul class="submenu">
-                                            <li><a href="/signup">Crear Empleado</a></li>
-                                            <li><a href="/buscar">Buscar Empleado</a></li>
-    
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)"><i class="ti-pie-chart"></i><span>Perfil</span></a>
-                                        <ul class="submenu">
-                                            <li><a href="javascript:void(0)">bar chart</a></li>
-                                            <li><a href="javascript:void(0)">line Chart</a></li>
-                                            <li><a href="javascript:void(0)">pie chart</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="mega-menu">
-                                        <a href="javascript:void(0)"><i class="ti-palette"></i><span>Ayuda</span></a>
-                                        <ul class="submenu">
-                                            <li><a href="javascript:void(0)">Accordion</a></li>
-                                            <li><a href="javascript:void(0)">Alert</a></li>
-                                            <li><a href="javascript:void(0)">Badge</a></li>
-                                            <li><a href="javascript:void(0)">Button</a></li>
-                                            <li><a href="javascript:void(0)">Button Group</a></li>
-                                            <li><a href="javascript:void(0)">Cards</a></li>
-                                            <li><a href="javascript:void(0)">Dropdown</a></li>
-                                            <li><a href="javascript:void(0)">List Group</a></li>
-                                            <li><a href="javascript:void(0)">Media Object</a></li>
-                                            <li><a href="javascript:void(0)">Modal</a></li>
-                                            <li><a href="javascript:void(0)">Pagination</a></li>
-                                            <li><a href="javascript:void(0)">Popover</a></li>
-                                            <li><a href="javascript:void(0)">Progressbar</a></li>
-                                            <li><a href="javascript:void(0)">Tab</a></li>
-                                            <li><a href="javascript:void(0)">Typography</a></li>
-                                            <li><a href="javascript:void(0)">Form</a></li>
-                                            <li><a href="javascript:void(0)">grid system</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <!-- nav and search button -->
-                    <div class="col-lg-3 clearfix">
-                        <div class="search-box">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
-                                <i class="ti-search"></i>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- mobile_menu -->
-                    <div class="col-12 d-block d-lg-none">
-                        <div id="mobile_menu"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- header area end -->
         <!-- page title area end contenido-->
-        <!-- <div w3-include-html="content.html"></div> -->
-        <div class="main-content-inner" id="main-content-inner">
+        <main class="main-content-inner" id="main-content-inner" >
             <div class="container mt-4" id="container">
                 {% block content %} 
                 {% endblock %}
             </div>
-        </div>
+        </main>
+
         <!-- main content area end -->
         <!-- footer area start-->
         <footer class="mt-auto">
@@ -175,6 +131,7 @@
         </footer>
         <!-- footer area end-->
     </div>
+
     <!-- main wrapper start -->
     <!-- offset area start -->
     <div class="offset-area">

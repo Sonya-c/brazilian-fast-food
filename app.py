@@ -8,7 +8,6 @@ from flask_sqlalchemy import SQLAlchemy
 from forms import LoginForm,SignupForm
 
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY']= '\x01\xe3i\x1c\xfc\x1c\xa3E\xc1%\xbfr\x9f\xd7\xdb\xc1\x11#t4\xec(\x8a\xed'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -18,12 +17,22 @@ login_manager = LoginManager(app)
 
 # init SQLAlchemy 
 db = SQLAlchemy(app)
-from models import Employee, User
+from models import Employee, Performance, User
 
-
+#global vars---
+display_employee="none"
+@app.context_processor
+def employee_vars():
+    global display_employee
+    try:
+        if current_user.is_admin==True:
+            display_employee='block'
+    except:
+        display_employee='none'
+    return dict(em_display=display_employee)
 # -------------- ROUTERS --------------------
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(user_id):   
     return User.get_by_id(int(user_id))
 
 @app.route('/',methods=['GET','POST'])
@@ -34,17 +43,12 @@ def index():
 @login_required
 def dashboard():
     print(str(current_user.is_admin))
-    return render_template('dashboard.html')
+    return render_template('dashboard.html',value="none")
 
-# @app.route('/register')
-# @login_required
-# def register():
-#     return user_unauthorized
-#     if current_user.is_admin==True:
-        
-#         print('session: '+str(current_user.is_authenticated))
-#         return render_template('register.html')
-    
+@app.route('/performance')
+@login_required
+def performance():
+    return render_template('performance.html', employee = Performance.get_performance(current_user.email)
 
 @app.route('/buscar',methods=['GET', 'POST'])
 @login_required

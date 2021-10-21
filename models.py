@@ -46,7 +46,7 @@ class User(db.Model,UserMixin):
 
 class Employee(db.Model):
     _tablename_ = 'employess'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer,unique=True ,primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     lastname = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(80), unique=True,nullable=False)
@@ -79,26 +79,24 @@ class Employee(db.Model):
         return Employee.query.all()
 
 
-""" class Employee(UserMixin):
-    def __init__(self, id, name, email, password, address,branch,job,contract,salary,contract_start
-    , contract_end,is_admin=False):
-        self.id = id
-        self.name = name
-        self.email = email
-        self.password = generate_password_hash(password)
-        self.address = address
-        self.branch = branch
-        self.job = job
-        self.contract = contract
-        self.salary = salary
-        self.start = contract_start
-        self.end = contract_end
-        self.is_admin = is_admin
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
+class Performance(db.Model):
+    _tablename_ = 'performance'
+    id = db.Column(db.Integer,unique=True ,primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+    lastname = db.Column(db.String(80), nullable=False)
+    email = db.Column(db.String(80), unique=True,nullable=False)
+    score = db.Column(db.Integer, nullable=False)
+    comment = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.Date(), nullable=False)
+
+    def save(self):
+        if not self.id:
+            db.session.add(self)
+        db.session.commit()
+
     def __repr__(self):
-        return '<Employee {}>'.format(self.email) """
+        return '<Performance {}>'.format(self.email)
 
-
+    @staticmethod
+    def get_performance(email):
+        return Performance.query.filter_by(email=email).first()

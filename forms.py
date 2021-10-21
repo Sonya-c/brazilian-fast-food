@@ -2,9 +2,8 @@ import datetime
 
 from flask_wtf.form import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField, widgets
-from wtforms import validators
 from wtforms.fields.core import DecimalField
-from wtforms.validators import EqualTo, Length, Email, DataRequired, NumberRange, ValidationError
+from wtforms.validators import EqualTo, Length, Email, DataRequired
 
 class LoginForm(FlaskForm):
     email = StringField('Usuario', validators=[DataRequired('El campo usuario no puede estar vacio')])
@@ -31,10 +30,18 @@ class SignupForm(FlaskForm):
     password2 = PasswordField('password2',validators=[DataRequired()])  
     submit = SubmitField('Crear usuario' )
 
+class PerformanceForm(FlaskForm):
+    name = StringField(label='Nombre',validators=[DataRequired('El campo de nombre no puede estar vacio'), Length(min=2)])
+    lastname = StringField(label='Apellido',validators=[DataRequired('El campo de apellido no puede estar vacio'), Length(min=2)])
+    email_address = StringField(label='Correo Electronico', validators=[Email('El valor ingresado en el campo de email no corresponde con una direccion de correo'), DataRequired('El campo de email no puede estar vacio')])
+    score = IntegerField(validators=[DataRequired()]) 
+    comment = StringField('Comentario')   
+    date = DateField('Fecha',format='%Y-%m-%d' , default=datetime.date.today)
 
 
 
 
-def validate_contract_end(self, filed):
-        if filed.data <= self.contract_start.data:
-            raise ValidationError('Finish date must more or equal start date.')
+
+# def validate_contract_end(self, filed):
+#         if filed.data <= self.contract_start.data:
+#             raise ValidationError('Finish date must more or equal start date.')
