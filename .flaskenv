@@ -1,3 +1,0 @@
-FLASK_APP=brazilianFastFoodCo.py
-FLASK_ENV=development
-FLASK_DEBUG=1
