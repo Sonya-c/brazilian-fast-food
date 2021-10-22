@@ -60,12 +60,115 @@
                                             <td>
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="mr-3"><a href="#" class="text-secondary" data-toggle="modal" data-target="#editEmpleado"><i class="fa fa-edit"></i></a></li>
-                                                    <li class="mr-3"><a href="#" class="text-danger" data-toggle="modal" data-target="#exampleDelete"><i class="ti-trash"></i></a></li>
+                                                    <li class="mr-3"><a href="#" class="text-danger" data-toggle="modal" data-target="#delete{{employees[i].email}}"><i class="ti-trash"></i></a></li>
                                                     <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#exampleRetro"><i class="fa fa-rupee"></i></a></li>
                                                     <li class="mr-3"><a href="#" class="" data-toggle="modal" data-target="#createRetro"><i class="fas fa-star"></i></a></li>
                                                 </ul>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="delete{{employees[i].email}}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Eliminar Empleado</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Desea eliminar el empleado?
+                                                        </p><p>{{employees[i].email}}</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        <form  method="post"> 
+                                                            <button type="submit" class="btn btn-primary">OK</button></form>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="editEmpleado">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Editar empleado</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                    </div>
+                        
+                                                    <div class="modsal-body">
+                                                        <form class="Brazilian-form" action="submit">
+                                                            {{ form.csrf_token()         }}
+                                                            {{ form.hidden_tag() }}
+                                                            <div class="Brazilian-form-izquierda form-group">
+                                                              <label class="">Nombre</label>
+                                                              
+                                                              {{form.name(class="form-control" ,value=employees[i].name)}}
+                                                            </div>
+                                                              
+                                                            <div class="Brazilian-form-derecha form-group">
+                                                              <label class="">Apellido</label>
+                                                              {{form.lastname(class="form-control" ,value=employees[i].lastname)}}
+                                                            </div>
+                                                              
+                                                            <div class="Brazilian-form-izquierda form-group">
+                                                              <label class="">E-mail</label>
+                                                              {{form.email_address(class="form-control" ,value=employees[i].email)}}
+                                                            </div>
+                                                              
+                                                            <div class="Brazilian-form-derecha form-group">
+                                                              <label class="">Identificacion</label>
+                                                              {{form.employee_id(class="form-control" ,value=employees[i].employee_id)}}
+                                                            </div>
+                                                              
+                                                            <div class="Brazilian-form-izquierda form-group">
+                                                              <label class="">Dirección</label>
+                                                              {{form.address(class="form-control" ,value=employees[i].address)}}
+                                                            </div>
+                                                              
+                                                            <div class="Brazilian-form-derecha form-group">
+                                                              <label class="">Genero</label>
+                                                              {{form.gender(class="form-control",value="F"  )}}
+                                                            </div>  
+                                                            <div class="Brazilian-form-izquierda form-group">
+                                                              <label class="">Dependencia</label>
+                                                              {{form.branch(class="form-control"  )}}
+                                                            </div>  
+                                                            <div class="Brazilian-form-derecha form-group">
+                                                              <label class="">Cargo</label>
+                                                              {{form.job_title(class="form-control" )}}
+                                                            </div>  
+                                                              
+                                                            <div class="Brazilian-form-izquierda form-group">
+                                                              <label class="">Tipo de contrato</label>
+                                                              {{form.contract(class="form-control" )}}
+                                                            </div>  
+                                                            <div class="Brazilian-form-derecha form-group">
+                                                              <label class="">Salario</label>
+                                                              {{form.salary(class="form-control" )}}
+                                                            </div>
+                                                            <div class="Brazilian-form-derecha form-group">
+                                                              <label class="">Fecha de inicio</label>
+                                                              {{form.contract_start(class="form-control" )}}
+                                                            </div> 
+                                                            <div class="Brazilian-form-izquierda form-group">
+                                                              <label class="">Fecha de terminacion</label>
+                                                              {{form.contract_end(class="form-control" )}}
+                                                            </div>   
+                                                    
+                                                           
+                                                      
+                                                            <button id="Brazilian-button" class="btn btn-block btn-success submit-button" type="submit">
+                                                              <span class="submit-button-lock"></span>
+                                                              <span class="align-middle">Guardar</span>
+                                                            </button>
+                                                      
+                                                          </form>
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
                                      
                                     {% endfor %}
                                     
@@ -76,25 +179,7 @@
                 </div>
                 <!-- <button type="button" class="btn btn-primary btn-flat btn-lg mt-3" data-toggle="modal" data-target="#exampleModalLong">Launch demo modal</button> -->
                 <!-- Modal -->
-                <div class="modal fade" id="exampleDelete">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Eliminar Empleado</h5>
-                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Desea eliminar el empleado?
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <form method="post"><button type="submit" class="btn btn-primary">OK</button></form>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div class="modal fade" id="exampleRetro">
                     <div class="modal-dialog">
@@ -169,97 +254,7 @@
                 </div>
 
 
-                <div class="modal fade" id="editEmpleado">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            
-                            <div class="modal-header">
-                                <h5 class="modal-title">Editar empleado</h5>
-                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                            </div>
-
-                            <div class="modsal-body">
-                                <form class="Brazilian-form" action="submit">
-        
-                                    <div class="Brazilian-form-izquierda form-group">
-                                      <label class="">Nombre</label>
-                                      <input class="form-control"  type="text" placeholder="Ej: Juan" required>
-                                    </div>
-                                      
-                                    <div class="Brazilian-form-derecha form-group">
-                                      <label class="">Apellido</label>
-                                      <input class="form-control" type="text" placeholder="Ej: Perez" required>
-                                    </div>
-                                      
-                                    <div class="Brazilian-form-izquierda form-group">
-                                      <label class="">E-mail</label>
-                                      <input class="form-control" type="email" placeholder="E-mail" required>
-                                    </div>
-                                      
-                                    <div class="Brazilian-form-derecha form-group">
-                                      <label class="">Identificacion</label>
-                                      <input class="form-control" type="number" placeholder="Ej: 1629" required>
-                                    </div>
-                                      
-                                    <div class="Brazilian-form-izquierda form-group">
-                                      <label class="">Dirección</label>
-                                      <input class="form-control"  type="text" placeholder="Ej: Juramento" required>
-                                    </div>
-                                      
-                                    <div class="Brazilian-form-derecha form-group">
-                                      <label class="">Genero</label>
-                                      <select class="form-control" id="Genero" required>
-                                        <option>Seleccione</option>
-                                        <option>Mujer</option>
-                                       <option>Hombre</option>
-                                      </select>
-                                    </div>  
-                                    <div class="Brazilian-form-izquierda form-group">
-                                      <label class="">Dependencia</label>
-                                      <select class="form-control" id="Genero" required>
-                                        <option>Seleccione</option>
-                                       
-                                      </select>
-                                    </div>  
-                                    <div class="Brazilian-form-derecha form-group">
-                                      <label class="">Cargo</label>
-                                      <select class="form-control" id="Genero" required>
-                                        <option>Seleccione</option>
-                            
-                                      </select>
-                                    </div>  
-                                      
-                                    <div class="Brazilian-form-izquierda form-group">
-                                      <label class="">Tipo de contrato</label>
-                                      <input class="form-control" type="text" placeholder="Ej: Indefinido" required>
-                                    </div>  
-                                    <div class="Brazilian-form-derecha form-group">
-                                      <label class="">Salario</label>
-                                      <input class="form-control" type="number" placeholder="Ej: 2000$" required>
-                                    </div>
-                                    <div class="Brazilian-form-derecha form-group">
-                                      <label class="">Fecha de inicio</label>
-                                      <input class="form-control" type="date" placeholder="Ej: Indefinido" required>
-                                    </div> 
-                                    <div class="Brazilian-form-izquierda form-group">
-                                      <label class="">Fecha de terminacion</label>
-                                      <input class="form-control" type="date" placeholder="Ej: Indefinido" required>
-                                    </div>   
-                            
-                                   
-                              
-                                    <button id="Brazilian-button" class="btn btn-block btn-success submit-button" type="submit">
-                                      <span class="submit-button-lock"></span>
-                                      <span class="align-middle">Guardar</span>
-                                    </button>
-                              
-                                  </form>
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
+                
 
             </div>
         </div>
