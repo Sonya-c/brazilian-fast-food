@@ -21,15 +21,22 @@ from models import Employee, Performance, User
 
 #global vars---
 display_employee="none"
+display_emp="none"
 @app.context_processor
 def employee_vars():
-    global display_employee
+    global display_employee, display_emp
     try:
         if current_user.is_admin==True:
             display_employee='block'
+            display_emp='none'
+
     except:
         display_employee='none'
-    return dict(em_display=display_employee)
+        display_emp='block'
+    return dict(em_display=display_employee, emp_display=display_emp)
+
+
+
 # -------------- ROUTERS --------------------
 @login_manager.user_loader
 def load_user(user_id):   
