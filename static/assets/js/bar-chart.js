@@ -617,31 +617,31 @@ if ($('#ambarchart5').length) {
         "type": "serial",
         "theme": "light",
         "dataProvider": [{
-            "name": "John",
+            "name": "Enero",
             "points": 35654,
             "color": "#7F8DA9"
         }, {
-            "name": "Damon",
+            "name": "Febrero",
             "points": 65456,
             "color": "#FEC514"
         }, {
-            "name": "Patrick",
+            "name": "Marzo",
             "points": 45724,
             "color": "#952FFE"
         }, {
-            "name": "Mark",
+            "name": "Abril",
             "points": 23654,
             "color": "#8282F1"
         }, {
-            "name": "Natasha",
+            "name": "Mayo",
             "points": 35654,
             "color": "#2599D4"
         }, {
-            "name": "Adell",
+            "name": "Junio",
             "points": 55456,
             "color": "#2563D6"
         }, {
-            "name": "Alessandro",
+            "name": "Julio",
             "points": 13654,
             "color": "#9524D4"
         }],
