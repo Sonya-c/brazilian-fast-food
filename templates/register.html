@@ -7,6 +7,10 @@
       <form class="Brazilian-form" method="POST">
         {{ form.csrf_token }}
         {{ form.hidden_tag() }}
+        {% for key in form.errors %}
+          <li style="color: red;">{{ ', '.join(form.errors[key]) }}</li>
+          <br>
+       {% endfor %}
         <div class="Brazilian-form-izquierda form-group col-md-6">
           <label class="">Nombre</label>
           {{form.name(class="form-control form-control-md", placeholder="Ej: Juan")}}
@@ -80,7 +84,8 @@
           {{form.password2(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
         </div> 
         <br> 
-        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }}  
+        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }} 
+       
       </form>
     </div> 
   </div>

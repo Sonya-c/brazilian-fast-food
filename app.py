@@ -1,11 +1,11 @@
-from flask import Flask, render_template,redirect,url_for,request
+from flask import Flask, render_template,redirect,url_for,request,flash
 from flask_login import LoginManager
 from flask_login import login_user, logout_user, current_user, login_manager
 from flask_login.utils import login_required
 
 from flask_sqlalchemy import SQLAlchemy
 
-from forms import LoginForm,SignupForm
+from forms import LoginForm,SignupForm, flash_errors
 
 
 app = Flask(__name__)
@@ -117,25 +117,22 @@ def login():
 @app.route("/signup/", methods=["GET", "POST"])
 @login_required
 def show_signup_form():
+
     #if current_user.is_authenticated:
     #    return redirect(url_for('index'))
     form = SignupForm()
     
     #print(f"app.show_sign() MENSAJE {form.gender.data}")
     #print(f"app.show_signup_form MENSAJE {form.contract_start.data}")
-    if form.is_submitted():
-        print ("submitted")
+    # if form.is_submitted():
+    #     print ("submitted")
 
-    if form.validate():
-        print ("valid")
+    # if form.validate():
+    #     print ("valid")
 
-    print(form.errors)
+    # print(form.errors)
 
     if form.validate_on_submit():
-        # print('error: ',form.errors)
-        # print ('OK')
-        # list_form = [form.email_address,form.gender.data,form.address.data,form.branch.data,form.job_title.data
-        # ,form.contract.data,form.salary.data]
         user = User.get_by_email(form.email_address.data)
         if user is None:
             employee = Employee(
@@ -155,8 +152,10 @@ def show_signup_form():
             user = User(name=form.name.data, email=form.email_address.data,is_admin=False)
             user.set_password(form.password1.data)
             user.save()
-            
+            flash("Usuario creado exitosamente!")
+   
     if current_user.is_admin==True:
+
         return render_template("register.html", form=form)
     return "ACCESO NO AUTORIZADO"
 

@@ -1,5 +1,5 @@
 import datetime
-
+from flask import flash
 from flask_wtf.form import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField, widgets
 from wtforms.fields.core import DecimalField
@@ -26,7 +26,7 @@ class SignupForm(FlaskForm):
     contract_start = DateField('Fecha inicial',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     contract_end = DateField('Fecha final',validators=[DataRequired()],    format='%Y-%m-%d', default=datetime.date.today) 
     
-    password1 = PasswordField('password1',validators=[DataRequired(),EqualTo('password2')])  
+    password1 = PasswordField('password1',validators=[DataRequired(),EqualTo('password2',message="La contraseña de verificación no coincide")])  
     password2 = PasswordField('password2',validators=[DataRequired()])  
     submit = SubmitField('Crear usuario' )
 
@@ -39,7 +39,14 @@ class PerformanceForm(FlaskForm):
     date = DateField('Fecha',format='%Y-%m-%d' , default=datetime.date.today)
 
 
-
+def flash_errors(form):
+    """Flashes form errors"""
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(u"Error in the %s field - %s" % (
+                getattr(form, field).label.text,
+                error
+            ), 'error')
 
 
 # def validate_contract_end(self, filed):
