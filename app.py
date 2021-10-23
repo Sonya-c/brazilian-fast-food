@@ -117,21 +117,8 @@ def login():
 @app.route("/signup/", methods=["GET", "POST"])
 @login_required
 def show_signup_form():
-
-    #if current_user.is_authenticated:
-    #    return redirect(url_for('index'))
-    form = SignupForm()
     
-    #print(f"app.show_sign() MENSAJE {form.gender.data}")
-    #print(f"app.show_signup_form MENSAJE {form.contract_start.data}")
-    # if form.is_submitted():
-    #     print ("submitted")
-
-    # if form.validate():
-    #     print ("valid")
-
-    # print(form.errors)
-
+    form = SignupForm()
     if form.validate_on_submit():
         user = User.get_by_email(form.email_address.data)
         if user is None:
