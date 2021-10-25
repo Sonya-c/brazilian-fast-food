@@ -61,12 +61,13 @@ def performance():
 @login_required
 def updatePassword():
     form = UpdatePassForm()
+    clave = None
     if form.validate_on_submit():
         user = User.get_by_email(current_user.email)
         if user is not None and user.check_password(form.password.data):
             user.updatepassword(form.password1.data)
         else:
-            return 'Clave incorrecta'
+            flash('Contraseña incorrecta')
     return render_template('updatePass.html',form=form)
 
 
