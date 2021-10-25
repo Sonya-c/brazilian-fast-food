@@ -5,7 +5,7 @@ from flask_login.utils import login_required
 
 from flask_sqlalchemy import SQLAlchemy
 
-from forms import LoginForm,SignupForm, flash_errors
+from forms import LoginForm,SignupForm, UpdatePassForm, flash_errors
 
 
 app = Flask(__name__)
@@ -56,6 +56,19 @@ def dashboard():
 @login_required
 def performance():
     return render_template('performance.html', employee = Performance.get_performance(current_user.email))
+
+@app.route('/updatepassword',methods=['GET', 'POST'])
+@login_required
+def updatePassword():
+    form = UpdatePassForm()
+    if form.validate_on_submit():
+        user = User.get_by_email(current_user.email)
+        if user is not None and user.check_password(form.password.data):
+            user.updatepassword(form.password1.data)
+        else:
+            return 'Clave incorrecta'
+    return render_template('updatePass.html',form=form)
+
 
 @app.route('/profile')
 @login_required
@@ -137,7 +150,7 @@ def show_signup_form():
                 branch = form.branch.data,
                 job = form.job_title.data,
                 contract = form.contract.data,
-                salary = 56465,#form.salary.data,
+                salary = form.salary.data,
                 start = form.contract_start.data,
                 end = form.contract_end.data)
             employee.save()

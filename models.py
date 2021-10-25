@@ -27,6 +27,10 @@ class User(db.Model,UserMixin):
 
     def delete(self):
         db.session.delete(self)
+        
+    def updatepassword(self,password):
+        self.password = generate_password_hash(password)
+        db.session.commit()
 
     def __repr__(self):
         return '<User {}>'.format(self.email)
@@ -43,6 +47,17 @@ class User(db.Model,UserMixin):
     def delete_user(email):
         User.query.filter_by(email=email).delete()
         db.session.commit()
+
+    @staticmethod
+    def updateUser(data):
+        us = User.query.filter_by(email=data.email).first()
+        us.name = data.name
+        us.email = data.email
+        db.session.commit()
+
+    
+    
+
 
 class Employee(db.Model):
     _tablename_ = 'employess'
@@ -76,6 +91,23 @@ class Employee(db.Model):
     @staticmethod
     def getEmployee(email):
         return Employee.query.filter_by(email=email).first()
+    @staticmethod
+    def updateEmployee(data):
+        emp = Employee.query.filter_by(email=data.email).first()
+        emp.name = data.name
+        emp.lastname = emp.lastname
+        emp.email = data.email
+        emp.employee_id= data.employee_id
+        emp.gender = data.gender
+        emp.address = data.address
+        emp.branch = data.branch
+        emp.job = data.job
+        emp.contract = data.contract
+        emp.salary = data.salary
+        emp.start = data.start
+        emp.end = data.end
+        db.session.commit()
+
 
     @staticmethod
     def getAll():

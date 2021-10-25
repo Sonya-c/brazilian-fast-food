@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="Brazilian-container">
+    <div id="Brazilian-checkout">
+      <h1>Cambiar contraseña</h1>
+      
+      <form class="Brazilian-form" method="POST">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+        
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">Contrasena</label>
+            {{form.password(class="form-control form-control-md", placeholder="Clave actual")}}
+          </div> 
+        <div></div>
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class="">Contrasena</label>
+          {{form.password1(class="form-control form-control-md", placeholder="Nueva contraseña")}}
+        </div> 
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class=""> Confirma la Contrasena</label>
+          {{form.password2(class="form-control form-control-md", placeholder="Confirmar contraseña")}}
+        </div> 
+        
+        <br> 
+        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }} 
+       
+      </form>
+      
+    </div> 
+  </div>
+  <div class="toast-container" style="position: fixed; bottom: 10px;">
+		{% for key in form.errors %}
+			<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+				<div class="toast-header">
+					<strong class="mr-auto">Error <span>{{''.join(key)}}</span></strong>
+					<button type="button" class="ml-2 mb-1 close toast-close" data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body" style="line-height: 110%; color: red;">{{ ', '.join(form.errors[key])}}</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
