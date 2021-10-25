@@ -132,7 +132,7 @@ def show_signup_form():
                 branch = form.branch.data,
                 job = form.job_title.data,
                 contract = form.contract.data,
-                salary = 56465,#form.salary.data,
+                salary = form.salary.data,
                 start = form.contract_start.data,
                 end = form.contract_end.data)
             employee.save()
