@@ -96,6 +96,11 @@ def buscar():
 def editar():
     return render_template('editarEmpleado.html')
 
+@app.route('/updatepassword')
+@login_required
+def updatepassword():
+    return render_template('updatepassword.html')
+    
 # ---------------- login sentences ----------------------------------------
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -160,6 +165,7 @@ def show_signup_form():
         return render_template("register.html", form=form)
     return "ACCESO NO AUTORIZADO"
 
+
 #logout ------------------------------------
 @app.route('/logout')
 def logout():
@@ -167,4 +173,4 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)   
+    app.run(debug=True) 

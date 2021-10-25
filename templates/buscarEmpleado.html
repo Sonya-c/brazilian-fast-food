@@ -2,38 +2,34 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-12">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
 
-            <div class="card">
-                <div class="card-body">
-                    <!-- <form autocomplete="off" onSubmit="buscar()"> -->
-                        
-                        <div class="form-row align-items-center">
-                            <div class="col-sm-3 my-1"></div>
-                            <div class="col-sm-3 my-1">
-                                <label class="sr-only" for="inlineFormInputName">Nombre</label>
-                                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre..">
-                            </div>
-                            <div class="col-sm-3 my-1">
-                                <label class="sr-only" for="inlineFormInputName">Documento</label>
-                                <input type="text" class="form-control" id="inlineFormInputDocument" placeholder="Documento..">
-                            </div>
-                        </div>
-                        <div class="form-row align-items-center">
-                            <div class="col-sm-5 my-1"></div>
-                            <div class="col-sm-2 my-1" style="text-align: -webkit-center;">
-                                <button type="submit" class="btn btn-primary" onclick="buscar()">Buscar</button>
-                                <!-- <input class="button submit btn btn-primary" id="submit" name="submit" value="Ingresar"> -->
-                            </div>
-                            <div class="col-sm-4 my-1"></div>
-                            <div class="col-sm-1 my-1">
-                                <div class="fw-icons"><a href="signup"><i class="fa fa-user-plus"></i> </a></div>
-                            </div>
-                        </div>
-                    <!-- </form> -->
+            <!-- Header of the main content -->
+            <div class="card-header">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label class="sr-only" for="inlineFormInputName">Nombre</label>
+                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre..">
+                    </div>
+
+                    <div class="col-auto">
+                        <label class="sr-only" for="inlineFormInputName">Documento</label>
+                        <input type="text" class="form-control" id="inlineFormInputDocument" placeholder="Documento..">
+                    </div>
+                    
+                    <div class="col-auto" style="text-align: -webkit-center;">
+                        <button type="button" class="btn btn-primary" onclick="buscar()">Buscar</button>    
+                    </div>
+
+                    <div class="col-auto" style="text-align: -webkit-center;">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create_employer"><i class="fa fa-user-plus"></i> Crear</button>    
+                    </div>
                 </div>
-                
+            </div>
+
+            <div class="card-body">                
                 <div class="card-body contentBuscar" id="contentBuscar">
                     <div class="single-table">
                         <div class="table-responsive">
@@ -251,11 +247,112 @@
                         </div>
                     </div>
                 </div>
-
-
-                
-
+       
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="create_employer">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title">Crear empleado</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+                <form class="Brazilian-form" action="submit">
+                    {{ form.csrf_token() }}
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="Brazilian-form-izquierda form-group col-md-6">
+                        <label class="">Nombre</label>
+                        {{form.name(class="form-control form-control-md", placeholder="Ej: Juan")}}
+                    </div>
+                        
+                    <div class="Brazilian-form-derecha form-group col-md-6">
+                        <label class="">Apellido</label>
+                        {{form.lastname(class="form-control form-control-md", placeholder="Ej: Perez")}}
+                    </div>
+                        
+                    <div class="Brazilian-form-izquierda form-group col-md-6">
+                        <label class="">E-mail</label>
+                        {{form.email_address(class="form-control form-control-md", placeholder="usuario@micorreo.com")}}
+                    </div>
+                        
+                    <div class="Brazilian-form-derecha form-group col-md-6">
+                        <label class="">Identificacion</label>
+                        {{form.employee_id(class="form-control form-control-md", placeholder="Ej: 1629")}}
+                    </div>
+                        
+                    <div class="Brazilian-form-izquierda form-group col-md-6">
+                        <label class="">Dirección</label>
+                        {{form.address(class="form-control form-control-md", placeholder="Ej: Juramento")}}
+                    </div>
+                        
+                    <div class="Brazilian-form-derecha form-group col-md-6">
+                        <label class="">Genero</label>
+                        {{form.gender(class="form-control form-control-md")}}
+                    </div>  
+                    
+                    <div class="Brazilian-form-izquierda form-group col-md-6">
+                        <label class="">Dependencia</label>
+                        {{form.branch(class="form-control form-control-md")}}
+                    </div>  
+                    
+                    <div class="Brazilian-form-derecha form-group col-md-6">
+                        <label class="">Cargo</label>
+                        {{form.job_title(class="form-control form-control-md")}}
+                    </div>  
+                        
+                    <div class="Brazilian-form-izquierda form-group col-md-6">
+                        <label class="">Tipo de contrato</label>
+                        {{form.contract(class="form-control form-control-md", placeholder="Ej: Indefinido")}}
+                    </div>  
+              
+                    <div class="Brazilian-form-derecha form-group col-md-6">
+                        <label class="">Salario</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        
+                        {{form.salary(class="form-control form-control-md", placeholder="Ej: $2000")}}
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="Brazilian-form-derecha form-group col-md-6">
+                    <label class="">Fecha de terminacion</label>
+                    {{form.contract_end(class="form-control form-control-md", type="date")}}
+                </div> 
+                
+                <div class="Brazilian-form-izquierda form-group col-md-6">
+                    <label class="">Fecha de inicio</label>
+                    {{form.contract_start(class="form-control form-control-md", type="date")}}
+                </div>  
+                
+                <div class="Brazilian-form-izquierda form-group col-md-6">
+                    <label class="">Contraseña</label>
+                    {{form.password1(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+                </div> 
+                
+                <div class="Brazilian-form-derecha form-group col-md-6">
+                    <label class=""> Confirma contraseña</label>
+                    {{form.password2(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+                </div> 
+                      
+                <br> 
+                {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }} 
+                     
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

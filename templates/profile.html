@@ -1,71 +1,76 @@
 {% extends "base.html" %}
 {% block content %}
   <div class="Brazilian-container">
-    <div id="Brazilian-checkout">
-      <h1>Perfil De Empleado</h1>
+    <div class="card" id="Brazilian-checkout">
       
-      <form class="Brazilian-form" >
+      <div class="card-header">
+        <h5>Perfil De Empleado</h5>
+      </div>
 
-        <div class="Brazilian-form-izquierda form-group col-md-6">
-          <label class="">Nombre</label>
-          {{employee.name}}
-        </div>
-          
-        <div class="Brazilian-form-derecha form-group col-md-6">
-          <label class="">Apellido</label>
-          {{employee.lastname}}
-        </div>
-          
-        <div class="Brazilian-form-izquierda form-group col-md-6">
-          <label class="">E-mail</label>
-          {{employee.email}}
-        </div>
-          
-        <div class="Brazilian-form-derecha form-group col-md-6">
-          <label class="">Identificacion</label>
-          {{employee.employee_id}}
-        </div>
-          
-        <div class="Brazilian-form-izquierda form-group col-md-6">
-          <label class="">Dirección</label>
-          {{employee.address}}
-        </div>
-          
-        <div class="Brazilian-form-derecha form-group col-md-6">
-          <label class="">Genero</label>
-          {{employee.gender}}
-        </div>  
-        <div class="Brazilian-form-izquierda form-group col-md-6">
-          <label class="">Dependencia</label>
-          {{employee.branch}}
-        </div>  
-        <div class="Brazilian-form-derecha form-group col-md-6">
-          <label class="">Cargo</label>
-          {{employee.job}}
-        </div>  
-          
-        <div class="Brazilian-form-izquierda form-group col-md-6">
-          <label class="">Tipo de contrato</label>
-          {{employee.contract}}
-        </div>  
+      <div class="card-body">
+        <form class="Brazilian-form" >
 
-        <div class="Brazilian-form-derecha form-group col-md-6">
-          <label class="">Salario</label>
-          {{employee.salary}}
-        
-        </div>
+          <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">Nombre</label>
+            {{employee.name}}
+          </div>
+            
+          <div class="Brazilian-form-derecha form-group col-md-6">
+            <label class="">Apellido</label>
+            {{employee.lastname}}
+          </div>
+            
+          <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">E-mail</label>
+            {{employee.email}}
+          </div>
+            
+          <div class="Brazilian-form-derecha form-group col-md-6">
+            <label class="">Identificacion</label>
+            {{employee.employee_id}}
+          </div>
+            
+          <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">Dirección</label>
+            {{employee.address}}
+          </div>
+            
+          <div class="Brazilian-form-derecha form-group col-md-6">
+            <label class="">Genero</label>
+            {{employee.gender}}
+          </div>  
+          <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">Dependencia</label>
+            {{employee.branch}}
+          </div>  
+          <div class="Brazilian-form-derecha form-group col-md-6">
+            <label class="">Cargo</label>
+            {{employee.job}}
+          </div>  
+            
+          <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">Tipo de contrato</label>
+            {{employee.contract}}
+          </div>  
 
-        <div class="Brazilian-form-derecha form-group col-md-6">
-          <label class="">Fecha de terminacion</label>
-          {{employee.start}}
-        </div> 
-        <div class="Brazilian-form-izquierda form-group col-md-6">
-          <label class="">Fecha de inicio</label>
-          {{employee.end}}
-        </div>  
-        <br> 
-        <button type="submit"></button>
-      </form>
+          <div class="Brazilian-form-derecha form-group col-md-6">
+            <label class="">Salario</label>
+            {{employee.salary}}
+          
+          </div>
+
+          <div class="Brazilian-form-derecha form-group col-md-6">
+            <label class="">Fecha de terminacion</label>
+            {{employee.start}}
+          </div> 
+          <div class="Brazilian-form-izquierda form-group col-md-6">
+            <label class="">Fecha de inicio</label>
+            {{employee.end}}
+          </div>  
+          <br> 
+          <button type="submit"></button>
+        </form>
+      </div>
     </div> 
   </div>
 {% endblock %}
