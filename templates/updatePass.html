@@ -26,7 +26,15 @@
         {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }} 
        
       </form>
-      
+      {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li style="color: red;">*{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     </div> 
   </div>
   <div class="toast-container" style="position: fixed; bottom: 10px;">
