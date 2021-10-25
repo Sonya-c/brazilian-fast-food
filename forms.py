@@ -10,6 +10,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired('El campo de contraeña no puede estar vacio')])
     remember_me = BooleanField('Recuérdame')
     submit = SubmitField('Ingresar')
+class UpdatePassForm(FlaskForm):
+    password = PasswordField('Clave actual', validators=[DataRequired()])
+    password1 = PasswordField('Nueva clave', validators=[DataRequired(),EqualTo("password2",message="La contraseña no coincide")])
+    password2 = PasswordField('Confirmar clave', validators=[DataRequired()])
+    submit = SubmitField()
 
 class SignupForm(FlaskForm):
     name = StringField(label='Nombre',validators=[DataRequired('El campo de nombre no puede estar vacio'), Length(min=2)])
