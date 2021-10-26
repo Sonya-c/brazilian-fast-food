@@ -56,8 +56,8 @@ def dashboard():
 @app.route('/performance')
 @login_required
 def performance():
-    score=30
-    score2=470-470*score/100
+    score=90
+    score2=490-470*score/100
     return render_template('performance.html', employee = Performance.get_performance(current_user.email),score=score,score2=score2)
 
 @app.route('/updatepassword',methods=['GET', 'POST'])

@@ -164,7 +164,6 @@ body, html {
 }
 
 .skill circle{
-  stroke: url(#GradientColor2);
   stroke-width: 20px;
 
   stroke-dasharray:470; 
