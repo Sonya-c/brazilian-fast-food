@@ -5,7 +5,7 @@ from flask_login.utils import login_required
 
 from flask_sqlalchemy import SQLAlchemy
 
-from forms import LoginForm,SignupForm, UpdatePassForm, flash_errors
+from forms import DeleteForm, LoginForm,SignupForm, UpdatePassForm, flash_errors
 
 
 app = Flask(__name__)
@@ -61,12 +61,15 @@ def performance():
 @login_required
 def updatePassword():
     form = UpdatePassForm()
+    
     if form.validate_on_submit():
         user = User.get_by_email(current_user.email)
         if user is not None and user.check_password(form.password.data):
             user.updatepassword(form.password1.data)
+            flash('Clave cambiada Exitosamente!','info')
         else:
-            flash('Contraseña incorrecta')
+            flash('Contraseña incorrecta','error')
+
     return render_template('updatePass.html',form=form)
 
 
@@ -75,18 +78,45 @@ def updatePassword():
 def profile():
     return render_template('profile.html', employee = Employee.getEmployee(current_user.email))
 
+
+#----------CRUD TEMPLATE------------------#
 @app.route('/buscar',methods=['GET', 'POST'])
 @login_required
 def buscar():
     if current_user.is_admin==True:
+        form=SignupForm()
+        form2= DeleteForm()
+        if form.validate_on_submit and form.submit.data:
+            user = User.get_by_email(form.email_address.data)
+            print('formnormal')
+            if user is None:
+                employee = Employee(
+                    name=form.name.data,
+                    lastname=form.lastname.data,
+                    email = form.email_address.data.lower(),
+                    employee_id = form.employee_id.data,
+                    gender = form.gender.data,
+                    address = form.address.data,
+                    branch = form.branch.data,
+                    job = form.job_title.data,
+                    contract = form.contract.data,
+                    salary = form.salary.data,
+                    start = form.contract_start.data,
+                    end = form.contract_end.data)
+                employee.save()
+                user = User(name=form.name.data, email=form.email_address.data,is_admin=False)
+                user.set_password(form.password1.data)
+                user.save()
+                flash("Usuario creado exitosamente!",'info')
 
-        if request.method == 'POST':
+        if form2.validate_on_submit and form2.submit2.data:
+            print('form2')
             User.delete_user(request.form['delete_email'])
             Employee.delete_employee(request.form['delete_email'])
             return "Usuario Eliminado Exitosamente!"
-        else:
-            form=SignupForm()
-            return render_template('buscarEmpleado.html',form=form,employees = Employee.getAll(),numbers = len(Employee.getAll()))
+            
+        
+        return render_template('buscarEmpleado.html',form=form,form2=form2,employees = Employee.getAll(),numbers = len(Employee.getAll()))
 
     return 'ACCESO NO AUTORIZADO'
 

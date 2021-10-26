@@ -35,6 +35,10 @@ class SignupForm(FlaskForm):
     password2 = PasswordField('password2',validators=[DataRequired()])  
     submit = SubmitField('Crear usuario' )
 
+class DeleteForm(FlaskForm):
+    email = StringField()
+    submit2 = SubmitField('OK' )
+
 class PerformanceForm(FlaskForm):
     name = StringField(label='Nombre',validators=[DataRequired('El campo de nombre no puede estar vacio'), Length(min=2)])
     lastname = StringField(label='Apellido',validators=[DataRequired('El campo de apellido no puede estar vacio'), Length(min=2)])

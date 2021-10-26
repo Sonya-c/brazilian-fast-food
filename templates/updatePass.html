@@ -26,11 +26,20 @@
         {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }} 
        
       </form>
-      {% with messages = get_flashed_messages() %}
+      {% with messages = get_flashed_messages(category_filter=["error"]) %}
             {% if messages %}
                 <ul class=flashes>
                 {% for message in messages %}
                 <li style="color: red;">*{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% with messages = get_flashed_messages(category_filter=["info"]) %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li style="color: green;">*{{ message }}</li>
                 {% endfor %}
                 </ul>
             {% endif %}
