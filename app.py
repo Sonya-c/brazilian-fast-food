@@ -146,7 +146,7 @@ def login():
         user.save()
     
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('performance'))
     
     form = LoginForm()
     if form.validate_on_submit():
