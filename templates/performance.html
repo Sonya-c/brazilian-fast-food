@@ -1,42 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="card">
-    <div class="card-header">
-      <h5>Desempeño</h5>
-    </div>
-    
-    <div class="card-body">
-        <div class="trad-history mt-4">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade active show" id="buy_order" role="tabpanel">
-                    <canvas id="seolinechart8" height="100"></canvas>
+    <div id="Brazilian-checkout"><H1>DESEMPEÑO</H1></div>
+    <div id="Brazilian-checkout">
+        <div class="skill ">
+            <div class="outer">
+                <div class="inner">
+                    <div id="number"></div>
                 </div>
             </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px" >
+                <defs>
+                   <linearGradient id="GradientColor">
+                      <stop offset="0%" stop-color="#e91e63" />
+                      <stop offset="100%" stop-color="#673ab7" />
+                   </linearGradient>
+                   <linearGradient id="GradientColor2">
+                    <stop offset="0%" stop-color="#e91e1e" />
+                    <stop offset="100%" stop-color="#b73a3a" />
+                    </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round"  transform="rotate(-90 80 80)"
+                 fill=none  />
+            </svg>
         </div>
-
-        <br>
-
-        <div class="card">
-            <div class="card-body">
-                <div class="Brazilian-form-izquierda form-group">
-                    <label class="">Desempeño</label>
-                    <input readonly class="form-control"  type="text" required>
-                </div>
-                              
-                <div class="Brazilian-form-derecha form-group">
-                    <label class="">Puntaje</label>
-                    <input readonly class="form-control" type="number" required>
-                </div>
-                              
-                <div class="form-group">
-                    <label style="display:block" class="">Mensaje</label>
-                    <textarea class="form-control" rows="3" readonly name="mensaje-retroalimentacion"></textarea>
-                </div>
+    </div>
+        
+          
+        <div>{{score}}</div>
+        <script>
+            let number = document.getElementById("number")
+            let counter= 0;
+            setInterval(()=>{
+                if (counter=='{{score}}'){
+                    clearInterval();
                     
-            </div>
-        </div>
-    </div>
-</div>
+                }else{
+                    counter += 1;
+                    number.innerHTML = counter;
+                    
+                }
+            },30);
+        </script>
+
 
 {% endblock %}

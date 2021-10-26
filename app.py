@@ -22,6 +22,7 @@ from models import Employee, Performance, User
 #global vars---
 display_employee="none"
 display_emp="none"
+
 @app.context_processor
 def employee_vars():
     global display_employee, display_emp
@@ -55,7 +56,9 @@ def dashboard():
 @app.route('/performance')
 @login_required
 def performance():
-    return render_template('performance.html', employee = Performance.get_performance(current_user.email))
+    score=30
+    score2=470-470*score/100
+    return render_template('performance.html', employee = Performance.get_performance(current_user.email),score=score,score2=score2)
 
 @app.route('/updatepassword',methods=['GET', 'POST'])
 @login_required
