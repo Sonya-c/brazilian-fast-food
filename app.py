@@ -113,7 +113,7 @@ def buscar():
             print('form2')
             User.delete_user(request.form['delete_email'])
             Employee.delete_employee(request.form['delete_email'])
-            return "Usuario Eliminado Exitosamente!"
+            flash("Usuario Eliminado Exitosamente!","info")
             
         
         return render_template('buscarEmpleado.html',form=form,form2=form2,employees = Employee.getAll(),numbers = len(Employee.getAll()))
@@ -187,7 +187,7 @@ def show_signup_form():
             user = User(name=form.name.data, email=form.email_address.data,is_admin=False)
             user.set_password(form.password1.data)
             user.save()
-            flash("Usuario creado exitosamente!")
+            flash("Usuario creado exitosamente!","info")
    
     if current_user.is_admin==True:
 

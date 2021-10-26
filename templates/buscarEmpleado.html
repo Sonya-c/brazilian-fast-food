@@ -26,6 +26,16 @@
                     <div class="col-auto" style="text-align: -webkit-center;">
                         <a href="/signup"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create_employer"><i class="fa fa-user-plus"></i> Crear</button></a>    
                     </div>
+                    <div class="col-auto">
+                      {% with messages = get_flashed_messages(category_filter=["info"]) %}
+                      {% if messages %}
+                          <ul class=flashes>
+                          {% for message in messages %}
+                          <li style="color: green;">*{{ message }}</li>
+                          {% endfor %}
+                          </ul>
+                      {% endif %}
+                  {% endwith %}</div>
                 </div>
             </div>
 
