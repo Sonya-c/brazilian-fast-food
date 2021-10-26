@@ -158,7 +158,9 @@ body, html {
 
 #number{
   font-weight: 60px;
+  font-size: xx-large;
   color: #555;
+
 }
 
 .skill circle{
