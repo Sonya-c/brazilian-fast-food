@@ -116,17 +116,25 @@ body, html {
   .Brazilian-form {
     margin: 0;
   }
+
+  .circular-bar{
+    padding-left: 6em;
+  }
 }
-@media screen and (min-width: 681px) and (max-width: 1200px) {
+@media screen and (min-width: 681px) and (max-width: 1400px) {
   #Brazilian-checkout {
     width: 600px;
+  }
+  .circular-bar{
+    padding-left: 36vh;
   }
 }
 
 /* NEW FEEDBACK*/
 
+
+
 .skill{
-  padding-left: 250px;
   width: 160px;
   height: 160px;
   position: relative;
@@ -175,6 +183,13 @@ body, html {
 .skill svg{
   position: absolute;
   top: 0;
-  left: 250;
+  left: 0;
+  
+}
+
+
+#feedback-text{
+  resize: none;
+  
 }
 

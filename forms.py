@@ -4,6 +4,9 @@ from flask_wtf.form import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,DateField,IntegerField, widgets
 from wtforms.fields.core import DecimalField
 from wtforms.validators import EqualTo, Length, Email, DataRequired
+from wtforms.fields import html5 as h5fields
+from wtforms.widgets import html5 as h5widgets
+from wtforms.widgets.core import TextArea
 
 class LoginForm(FlaskForm):
     email = StringField('Usuario', validators=[DataRequired('El campo usuario no puede estar vacio')])
@@ -40,12 +43,11 @@ class DeleteForm(FlaskForm):
     submit2 = SubmitField('OK' )
 
 class PerformanceForm(FlaskForm):
-    name = StringField(label='Nombre',validators=[DataRequired('El campo de nombre no puede estar vacio'), Length(min=2)])
-    lastname = StringField(label='Apellido',validators=[DataRequired('El campo de apellido no puede estar vacio'), Length(min=2)])
-    email_address = StringField(label='Correo Electronico', validators=[Email('El valor ingresado en el campo de email no corresponde con una direccion de correo'), DataRequired('El campo de email no puede estar vacio')])
-    score = IntegerField(validators=[DataRequired()]) 
-    comment = StringField('Comentario')   
+    email = StringField(label='Correo Electronico', validators=[Email('El valor ingresado en el campo de email no corresponde con una direccion de correo'), DataRequired('El campo de email no puede estar vacio')])
+    score = h5fields.IntegerField( "Number2", widget=h5widgets.NumberInput(min=0, max=100, step=5),validators=[DataRequired()])
+    comment = StringField('Feedback',widget=TextArea())   
     date = DateField('Fecha',format='%Y-%m-%d' , default=datetime.date.today)
+    submit3 = SubmitField('Enviar')
 
 
 def flash_errors(form):

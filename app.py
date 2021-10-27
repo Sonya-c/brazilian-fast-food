@@ -5,7 +5,7 @@ from flask_login.utils import login_required
 
 from flask_sqlalchemy import SQLAlchemy
 
-from forms import DeleteForm, LoginForm,SignupForm, UpdatePassForm, flash_errors
+from forms import DeleteForm, LoginForm, PerformanceForm,SignupForm, UpdatePassForm, flash_errors
 
 
 app = Flask(__name__)
@@ -30,7 +30,9 @@ def employee_vars():
         if current_user.is_admin==True:
             display_employee='block'
             display_emp='none'
-
+        else:
+            display_employee='none'
+            display_emp='block'
     except:
         display_employee='none'
         display_emp='block'
@@ -56,10 +58,14 @@ def dashboard():
 @app.route('/performance')
 @login_required
 def performance():
-    score=90
-    score2=490-470*score/100
-    return render_template('performance.html', employee = Performance.get_performance(current_user.email),score=score,score2=score2)
-
+    try:
+        feed= Performance.get_performance(current_user.email)
+        score=feed[-1].score
+        score2=490-470*score/100
+        feedback = feed[-1].comment
+        return render_template('performance.html', employee = Performance.get_performance(current_user.email),score=score,score2=score2,feedback=feedback)
+    except:
+        return redirect(url_for('dashboard'))
 @app.route('/updatepassword',methods=['GET', 'POST'])
 @login_required
 def updatePassword():
@@ -89,6 +95,7 @@ def buscar():
     if current_user.is_admin==True:
         form=SignupForm()
         form2= DeleteForm()
+        form3 = PerformanceForm()
         if form.validate_on_submit and form.submit.data:
             user = User.get_by_email(form.email_address.data)
             print('formnormal')
@@ -117,9 +124,15 @@ def buscar():
             User.delete_user(request.form['delete_email'])
             Employee.delete_employee(request.form['delete_email'])
             flash("Usuario Eliminado Exitosamente!","info")
-            
         
-        return render_template('buscarEmpleado.html',form=form,form2=form2,employees = Employee.getAll(),numbers = len(Employee.getAll()))
+        if form3.validate_on_submit and form3.submit3.data:
+            print(form3.email.data)
+            feed = Performance(email=form3.email.data,score=form3.score.data,
+            comment=form3.comment.data,date=form3.date.data)
+            feed.save()
+            flash('Retroalimentacion enviada exitosamente!','info')
+        
+        return render_template('buscarEmpleado.html',form=form,form2=form2,form3=form3,employees = Employee.getAll(),numbers = len(Employee.getAll()))
 
     return 'ACCESO NO AUTORIZADO'
 

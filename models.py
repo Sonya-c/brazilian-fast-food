@@ -117,9 +117,7 @@ class Employee(db.Model):
 class Performance(db.Model):
     _tablename_ = 'performance'
     id = db.Column(db.Integer,unique=True ,primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    lastname = db.Column(db.String(80), nullable=False)
-    email = db.Column(db.String(80), unique=True,nullable=False)
+    email = db.Column(db.String(80), nullable=False)
     score = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String(500), nullable=False)
     date = db.Column(db.Date(), nullable=False)
@@ -134,4 +132,4 @@ class Performance(db.Model):
 
     @staticmethod
     def get_performance(email):
-        return Performance.query.filter_by(email=email).first()
+        return Performance.query.filter_by(email=email)

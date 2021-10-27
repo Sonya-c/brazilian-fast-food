@@ -2,8 +2,8 @@
 {% block content %}
 
     <div id="Brazilian-checkout"><H1>DESEMPEÑO</H1></div>
-    <div id="Brazilian-checkout">
-        <div class="skill ">
+    <div id="Brazilian-checkout" class="circular-bar">
+        <div class="skill  ">
             <div class="outer">
                 <div class="inner">
                     <div id="number"></div>
@@ -30,10 +30,16 @@
             </svg>
         </div>
     </div>
-    
+
+
+    <DIV id="Brazilian-checkout">
+        <div class="Brazilian-form">
+            <label for="feedback-text" style="font-weight: bold;">Feedback:</label>
+        <textarea name="" id="feedback-text" cols="30" rows="10" disabled>{{feedback}}</textarea>
+        </div>
         
-          
-        <div>{{score}}</div>
+    </DIV>
+    
         <script>
             
             if('{{score}}'<=30){
