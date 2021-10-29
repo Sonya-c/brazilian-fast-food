@@ -210,6 +210,39 @@ def show_signup_form():
         return render_template("register.html", form=form)
     return "ACCESO NO AUTORIZADO"
 
+#--------------------CREAR ADMINISTRADOR------------------------------#
+
+@app.route("/signupAdmin/", methods=["GET", "POST"])
+@login_required
+def show_signup_form2():
+    
+    form = SignupForm()
+    if form.validate_on_submit():
+        user = User.get_by_email(form.email_address.data)
+        if user is None:
+            employee = Employee(
+                name=form.name.data,
+                lastname=form.lastname.data,
+                email = form.email_address.data.lower(),
+                employee_id = form.employee_id.data,
+                gender = form.gender.data,
+                address = form.address.data,
+                branch = form.branch.data,
+                job = form.job_title.data,
+                contract = form.contract.data,
+                salary = form.salary.data,
+                start = form.contract_start.data,
+                end = form.contract_end.data)
+            employee.save()
+            user = User(name=form.name.data, email=form.email_address.data,is_admin=True)
+            user.set_password(form.password1.data)
+            user.save()
+            flash("Administrador creado exitosamente!","info")
+   
+    if current_user.is_admin==True:
+
+        return render_template("registerAdmin.html", form=form)
+    return "ACCESO NO AUTORIZADO"
 
 #logout ------------------------------------
 @app.route('/logout')

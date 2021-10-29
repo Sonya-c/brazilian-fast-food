@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="Brazilian-container">
+    <div id="Brazilian-checkout">
+      <h1>Registrar Administrador</h1>
+      
+      <form class="Brazilian-form" method="POST">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+      
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class="">Nombre</label>
+          {{form.name(class="form-control form-control-md", placeholder="Ej: Juan")}}
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group col-md-6">
+          <label class="">Apellido</label>
+          {{form.lastname(class="form-control form-control-md", placeholder="Ej: Perez")}}
+        </div>
+          
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class="">E-mail</label>
+          {{form.email_address(class="form-control form-control-md", placeholder="usuario@micorreo.com")}}
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group col-md-6">
+          <label class="">Identificacion</label>
+          {{form.employee_id(class="form-control form-control-md", placeholder="Ej: 1629")}}
+        </div>
+          
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class="">Dirección</label>
+          {{form.address(class="form-control form-control-md", placeholder="Ej: Juramento")}}
+        </div>
+          
+        <div class="Brazilian-form-derecha form-group col-md-6">
+          <label class="">Genero</label>
+          {{form.gender(class="form-control form-control-md")}}
+        </div>  
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class="">Dependencia</label>
+          {{form.branch(class="form-control form-control-md")}}
+        </div>  
+  
+
+
+        <div class="Brazilian-form-izquierda form-group col-md-6">
+          <label class="">Contrasena</label>
+          {{form.password1(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+        </div> 
+        <div class="Brazilian-form-derecha form-group col-md-6">
+          <label class=""> Confirma la Contrasena</label>
+          {{form.password2(class="form-control form-control-md", placeholder="ContrasenaMuySegura123")}}
+        </div> 
+        
+        <br> 
+        {{form.contract(type="hidden",value="000000")}}
+        {{form.job_title(type="hidden")}}
+        {{form.salary(type="hidden",value=111111)}}
+        {{form.submit(id="Brazilian-button",class="btn btn-block btn-success submit-button") }} 
+       
+      </form>
+      {% with messages = get_flashed_messages(category_filter=["info"]) %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li style="color: green;">*{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div> 
+  </div>
+  <div class="toast-container" style="position: fixed; bottom: 10px;">
+		{% for key in form.errors %}
+			<div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+				<div class="toast-header">
+					<strong class="mr-auto">Error <span>{{''.join(key)}}</span></strong>
+					<button type="button" class="ml-2 mb-1 close toast-close" data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body" style="line-height: 110%; color: red;">{{ ', '.join(form.errors[key])}}</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
