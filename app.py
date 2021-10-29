@@ -85,7 +85,7 @@ def updatePassword():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', employee = Employee.getEmployee(current_user.email))
+    return render_template('profile.html', employee = Employee.getEmployee(current_user.email), perform = Performance.get_performance(current_user.email), numbers = len(Performance.getAllp()))
 
 
 #----------CRUD TEMPLATE------------------#

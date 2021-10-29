@@ -68,8 +68,38 @@
             {{employee.end}}
           </div>  
           <br> 
-          <button type="submit"></button>
+          <button type="hidden"></button>
         </form>
+      </div>
+      <div class="card-body">                
+        <div class="card-body " id="">
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-hover progress-table text-center">
+                        <thead class="text-uppercase">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Score</th>
+                                <th scope="col">Feedback</th>
+                                <th scope="col">Fecha</th>
+                            </tr>
+                        </thead>
+                        <!-- El modelo no tiene documento :'c-->
+                        <tbody>
+                            {% for i in range(numbers)%}
+                        
+                                <tr>
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{ perform[i].score }}</td>
+                                    <td>{{ perform[i].comment}}</td>
+                                    <td>{{ perform[i].date}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
       </div>
     </div> 
   </div>

@@ -133,3 +133,7 @@ class Performance(db.Model):
     @staticmethod
     def get_performance(email):
         return Performance.query.filter_by(email=email)
+
+    @staticmethod
+    def getAllp():
+        return Performance.query.all()
